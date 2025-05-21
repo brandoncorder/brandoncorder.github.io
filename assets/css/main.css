@@ -2271,3 +2271,35 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
+.fieldwork-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.fieldwork-entry {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.fieldwork-entry:hover {
+  transform: scale(1.03);
+}
+
+.fieldwork-entry .overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  padding: 0.75rem;
+  text-align: center;
+}
