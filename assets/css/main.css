@@ -2274,19 +2274,19 @@ button,
 
 .fieldwork-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Bigger tiles */
+  gap: 2rem;
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .fieldwork-entry {
-  position: relative;
+  display: block;
+  width: 100%;
   aspect-ratio: 1 / 1;
   background-size: cover;
   background-position: center;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  text-decoration: none;
+  border-radius: 0.75rem;
   transition: transform 0.3s ease;
 }
 
@@ -2294,12 +2294,9 @@ button,
   transform: scale(1.03);
 }
 
-.fieldwork-entry .overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
-  padding: 0.75rem;
-  text-align: center;
+.fieldwork-title {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #3d4449;
+  font-family: "Roboto Slab", serif;
 }
