@@ -2300,3 +2300,48 @@ button,
   color: #3d4449;
   font-family: "Roboto Slab", serif;
 }
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.research-entry {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.research-entry:hover {
+  transform: scale(1.03);
+}
+
+.research-entry .overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.research-entry h3 {
+  margin: 0;
+  font-size: 1.25em;
+  font-weight: 700;
+}
+
+.research-entry p {
+  margin: 0.25em 0 0 0;
+  font-size: 0.95em;
+  font-weight: 400;
+}
+
