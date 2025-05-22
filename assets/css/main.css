@@ -2310,12 +2310,14 @@ button,
 
 .research-entry {
   position: relative;
+  aspect-ratio: 1 / 1;
   background-size: cover;
   background-position: center;
-  aspect-ratio: 1 / 1;
   border-radius: 0.5rem;
   overflow: hidden;
   text-decoration: none;
+  display: flex;
+  align-items: flex-end;
   transition: transform 0.3s ease;
 }
 
@@ -2324,23 +2326,14 @@ button,
 }
 
 .research-entry .overlay {
-  position: absolute;
-  bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
   width: 100%;
-  background: rgba(0, 0, 0, 0.6); /* dark overlay for contrast */
-  color: #fff;
   padding: 1rem;
   text-align: center;
 }
 
-.research-entry h3 {
+.research-entry .overlay h3 {
+  color: white;
+  font-size: 1em;
   margin: 0;
-  font-size: 1.25em;
-  font-weight: 700;
-  color: #ffffff; /* Ensure title is white */
-}
-
-/* Remove subtitle styling since it's no longer used */
-.research-entry p {
-  display: none;
 }
