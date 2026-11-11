@@ -34,8 +34,8 @@ EXPECTED = [
     ("science-communication.html", "Science Communication"),
     ("service.html", "Service and Outreach"),
     ("fieldwork.html", "Fieldwork"),
-    ("gallery.html", "Gallery"),
     ("collections.html", "Collections"),
+    ("gallery.html", "Gallery"),
 ]
 CONTACTS = ("mailto:bdcorder@ncsu.edu", "mailto:brandoncorder95@gmail.com")
 
@@ -290,8 +290,22 @@ def audit() -> list[str]:
         failures.append("images/favicon.png does not have a valid PNG signature")
     for page_name in PAGES:
         page = (ROOT / page_name).read_text(encoding="utf-8")
-        if page.count('<link rel="icon" type="image/png" href="images/favicon.png?v=1" />') != 1:
-            failures.append(f"{page_name}: favicon missing or duplicated")
+        for icon_ref in (
+            '<link rel="icon" type="image/png" href="/images/favicon.png?v=20261111-2" />',
+            '<link rel="shortcut icon" href="/images/favicon.png?v=20261111-2" type="image/png" />',
+            '<link rel="apple-touch-icon" href="/images/favicon.png?v=20261111-2" />',
+        ):
+            if page.count(icon_ref) != 1:
+                failures.append(f"{page_name}: missing or duplicated browser icon: {icon_ref}")
+        if 'favicon.png?v=1' in page:
+            failures.append(f"{page_name}: old cached favicon URL remains")
+
+    # The optimization source and workflow must stay in sync. The generated
+    # icon files are checked after the build workflow has produced them.
+    if not (ROOT / "scripts/build_favicons.py").is_file():
+        failures.append("Favicon optimization script missing")
+    if not (ROOT / ".github/workflows/build-favicons.yml").is_file():
+        failures.append("Favicon generation workflow missing")
 
     return failures
 
