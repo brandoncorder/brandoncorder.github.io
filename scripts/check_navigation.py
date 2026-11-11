@@ -242,7 +242,7 @@ def audit() -> list[str]:
         failures.append("images/gallery/ upload folder or instructions missing")
     if (ROOT / ".nojekyll").exists():
         failures.append("Jekyll must remain enabled for automatic gallery file listing")
-    if not gallery_html.startswith("---\\nlayout: null\\n---\\n"):
+    if gallery_html.splitlines()[:3] != ["---", "layout: null", "---"]:
         failures.append("gallery.html must have Jekyll front matter")
     for required in (
         "site.static_files",
