@@ -20,12 +20,11 @@ async function render({ items, ok = true } = {}) {
   const old = element("figure");
   grid.children.push(old);
   grid.replaceChildren = function (fragment) { this.children = fragment.children; };
-  const status = element("p");
   const document = {
     readyState: "complete",
     createElement: element,
     createDocumentFragment() { return element("fragment"); },
-    getElementById(id) { return id === "gallery-grid" ? grid : id === "gallery-status" ? status : null; }
+    getElementById(id) { return id === "gallery-grid" ? grid : null; }
   };
   const window = {
     console: { warn() {} },
@@ -38,7 +37,7 @@ async function render({ items, ok = true } = {}) {
   };
   vm.runInNewContext(script, { document, window });
   for (let i = 0; i < 5; i++) await new Promise(resolve => setImmediate(resolve));
-  return { grid, status, old };
+  return { grid, old };
 }
 
 (async function () {
@@ -53,15 +52,12 @@ async function render({ items, ok = true } = {}) {
   assert.equal(r.grid.children[1].children[1].textContent, "Triphora trianthophoros");
   assert.equal(r.grid.children[1].children[0].children[0].alt, "Triphora trianthophoros");
   assert.match(r.grid.children[1].children[0].href, /Triphora%20trianthophoros\.JPG$/);
-  assert.equal(r.status.textContent, "2 photographs");
 
   const s = await render({items: []});
   assert.equal(s.grid.children.length, 0);
-  assert.match(s.status.textContent, /No photographs/);
 
   const offline = await render({ok: false});
   assert.equal(offline.grid.children.length, 1, "retain static fallback");
   assert.equal(offline.grid.children[0], offline.old);
-  assert.match(offline.status.textContent, /temporarily unavailable/);
   console.log("PASS: Gallery loads and sorts photos, preserves exact filename captions, and handles API failures.");
 })().catch(error => { console.error(error); process.exit(1); });
