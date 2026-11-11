@@ -262,6 +262,17 @@ def audit() -> list[str]:
             failures.append(f"Service page missing: {detail}")
 
 
+    # Verify the uploaded PNG and the icon reference on each page.
+    favicon = ROOT / "images/favicon.png"
+    if not favicon.is_file():
+        failures.append("images/favicon.png is missing")
+    elif favicon.read_bytes()[:8] != bytes.fromhex("89504e470d0a1a0a"):
+        failures.append("images/favicon.png does not have a valid PNG signature")
+    for page_name in PAGES:
+        page = (ROOT / page_name).read_text(encoding="utf-8")
+        if page.count('<link rel="icon" type="image/png" href="images/favicon.png?v=1" />') != 1:
+            failures.append(f"{page_name}: favicon missing or duplicated")
+
     return failures
 
 
