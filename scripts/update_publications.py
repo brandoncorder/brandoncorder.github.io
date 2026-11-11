@@ -18,7 +18,7 @@ import sys
 from datetime import date
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode
+from urllib.parse import urlencode, quote
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,6 +49,40 @@ def doi_value(raw: object) -> str:
     value = re.sub(r"(?i)^https?://(?:dx\.)?doi\.org/", "", value)
     value = re.sub(r"(?i)^doi:\s*", "", value)
     return value.lower() if re.match(r"^10\.\d{4,9}/", value, re.I) else ""
+
+
+def crossref_authors(work: dict) -> list[dict]:
+    """Get authors in publisher-supplied order, with ORCID when available."""
+    authors: list[dict] = []
+    for entry in work.get("author") or []:
+        given = str(entry.get("given") or "").strip()
+        family = str(entry.get("family") or "").strip()
+        full_name = str(entry.get("name") or "").strip()
+        if not family and not full_name:
+            continue
+        author = {"given": given, "family": family} if family else {"name": full_name}
+        orcid_id = str(entry.get("ORCID") or "").rstrip("/").split("/")[-1]
+        if re.fullmatch(r"\\d{4}-\\d{4}-\\d{4}-[\\dX]{4}", orcid_id):
+            author["orcid"] = orcid_id
+        authors.append(author)
+    return authors
+
+
+def enrich_authors_by_doi(records: list[dict]) -> None:
+    """Resolve DOI author lists, including records missing the queried ORCID."""
+    for record in records:
+        doi = doi_value(record.get("doi"))
+        if not doi:
+            continue
+        try:
+            url = "https://api.crossref.org/works/" + quote(doi, safe="/")
+            work = fetch_json(url).get("message") or {}
+            authors = crossref_authors(work)
+            if authors:
+                record["authors"] = authors
+        except (HTTPError, URLError, TimeoutError, ValueError, KeyError) as exc:
+            print(f"Could not refresh DOI author list for {doi}: {type(exc).__name__}",
+                  file=sys.stderr)
 
 
 def key(record: dict) -> str:
@@ -147,6 +181,7 @@ def read_crossref_works() -> list[dict]:
             "url": "https://doi.org/" + doi,
             "type": "journal-article" if kind == "journal-article" else "other",
             "source": "Crossref",
+            "authors": crossref_authors(work),
         })
     return result
 
@@ -215,6 +250,9 @@ def main() -> int:
                 if not winner.get("url"):
                     winner["url"] = "https://doi.org/" + supplement
         records[match] = winner
+    # Publisher DOI metadata is preferred for author order and full names.
+    # If the API is unavailable, any saved author list is retained.
+    enrich_authors_by_doi(records)
     updated = sorted(records,
                      key=lambda item: (-(item.get("year") or 0),
                                        item.get("title", "").casefold()))
