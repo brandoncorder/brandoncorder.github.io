@@ -76,8 +76,15 @@ def read_orcid_works() -> list[dict]:
     url = f"https://pub.orcid.org/v3.0/{ORCID}/works"
     data = fetch_json(url, "application/vnd.orcid+json")
     result: list[dict] = []
+    groups = data.get("group") or []
+    kinds = {}
+    for group in groups:
+        for work in group.get("work-summary") or []:
+            kind = str(work.get("publication-type") or "(missing)")
+            kinds[kind] = kinds.get(kind, 0) + 1
+    print(f"ORCID public record: {len(groups)} groups; work types: {kinds}")
 
-    for group in data.get("group") or []:
+    for group in groups:
         summaries = group.get("work-summary") or []
         for work in summaries:
             work_type = str(work.get("publication-type") or "").lower()
