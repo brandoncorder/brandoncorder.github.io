@@ -1,6 +1,3 @@
----
-layout: null
----
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -17,6 +14,7 @@ layout: null
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
   <link rel="stylesheet" href="assets/css/site-overrides.css?v=20261111d" />
   <script src="assets/js/theme.js?v=20261111b"></script>
+  <script src="assets/js/gallery.js?v=20261111-3" defer></script>
 </head>
 <body class="is-preload">
   <div id="wrapper">
@@ -33,74 +31,87 @@ layout: null
 
         <section id="gallery">
           <header class="major"><h1 class="page-title">Gallery</h1></header>
-          <p>Selected photographs from botanical fieldwork and studies of plant diversity. Select an image to view it at full size.</p>
-          <!-- GitHub Pages/Jekyll automatically includes any image added to
-               images/gallery/ on the next site build. No API requests or
-               manually maintained image manifest are required. -->
-          <h2>Gallery Photographs</h2>
-          <div class="botanical-gallery">
-            {% assign gallery_photos = site.static_files | where_exp: "photo", "photo.path contains '/images/gallery/'" | sort: "name" %}
-            {% assign gallery_photo_count = 0 %}
-            {% for photo in gallery_photos %}
-              {% assign photo_extension = photo.extname | downcase %}
-              {% if photo_extension == '.jpg' or photo_extension == '.jpeg' or photo_extension == '.png' or photo_extension == '.webp' or photo_extension == '.gif' or photo_extension == '.avif' %}
-                {% assign gallery_photo_count = gallery_photo_count | plus: 1 %}
+          <p>Botanical photographs uploaded to the Gallery folder. The caption under each photograph is its filename, without the extension. Select a photograph to see the full image.</p>
+          <p id="gallery-status" class="gallery-status" role="status" aria-live="polite">13 photographs</p>
+          <!-- Progressive enhancement: these 13 current uploads appear even if JavaScript or GitHub's API is unavailable. -->
+          <div id="gallery-grid" class="botanical-gallery">
             <figure class="gallery-item">
-              <a href="{{ photo.path | relative_url | escape }}" target="_blank" rel="noopener noreferrer" aria-label="Open full image: {{ photo.basename | escape }}">
-                <img src="{{ photo.path | relative_url | escape }}" alt="{{ photo.basename | escape }}" loading="lazy" decoding="async" />
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Asclepias%20humistrata%20(Apocynaceae)%20-%20Duval%20County%2C%20Florida%20-%20May%202022.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Asclepias humistrata (Apocynaceae) - Duval County, Florida - May 2022">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Asclepias%20humistrata%20(Apocynaceae)%20-%20Duval%20County%2C%20Florida%20-%20May%202022.JPEG" alt="Asclepias humistrata (Apocynaceae) - Duval County, Florida - May 2022" loading="lazy" decoding="async" />
               </a>
-              <figcaption>{{ photo.basename | escape }}</figcaption>
-            </figure>
-              {% endif %}
-            {% endfor %}
-          </div>
-          {% if gallery_photo_count == 0 %}
-          <p class="gallery-empty">More botanical photographs coming soon.</p>
-          {% endif %}
-
-          <h2>Selected Fieldwork Photographs</h2>
-                    <div class="botanical-gallery">
-            <figure class="gallery-item">
-              <a href="images/alaska1.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Alaska">
-                <img src="images/alaska1.JPEG" alt="Botanical fieldwork photograph from Alaska" loading="lazy" decoding="async" />
-              </a>
-              <figcaption>Alaska</figcaption>
+              <figcaption>Asclepias humistrata (Apocynaceae) - Duval County, Florida - May 2022</figcaption>
             </figure>
             <figure class="gallery-item">
-              <a href="images/isleroyale1.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Isle Royale">
-                <img src="images/isleroyale1.JPEG" alt="Botanical fieldwork photograph from Isle Royale" loading="lazy" decoding="async" />
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Buxbaumia%20aphylla%20(Buxbaumiaceae)%20-%20Cheboygan%20County%2C%20Michigan%20-%20May%202021.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Buxbaumia aphylla (Buxbaumiaceae) - Cheboygan County, Michigan - May 2021">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Buxbaumia%20aphylla%20(Buxbaumiaceae)%20-%20Cheboygan%20County%2C%20Michigan%20-%20May%202021.JPEG" alt="Buxbaumia aphylla (Buxbaumiaceae) - Cheboygan County, Michigan - May 2021" loading="lazy" decoding="async" />
               </a>
-              <figcaption>Isle Royale</figcaption>
+              <figcaption>Buxbaumia aphylla (Buxbaumiaceae) - Cheboygan County, Michigan - May 2021</figcaption>
             </figure>
             <figure class="gallery-item">
-              <a href="images/mountwash1.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Mount Washington">
-                <img src="images/mountwash1.JPEG" alt="Botanical fieldwork photograph from Mount Washington" loading="lazy" decoding="async" />
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Diphyscium%20foliosum%20(Diphysciaceae)%20-%20Sevier%20County%2C%20Tennessee%20-%20April%202022.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Diphyscium foliosum (Diphysciaceae) - Sevier County, Tennessee - April 2022">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Diphyscium%20foliosum%20(Diphysciaceae)%20-%20Sevier%20County%2C%20Tennessee%20-%20April%202022.JPEG" alt="Diphyscium foliosum (Diphysciaceae) - Sevier County, Tennessee - April 2022" loading="lazy" decoding="async" />
               </a>
-              <figcaption>Mount Washington</figcaption>
+              <figcaption>Diphyscium foliosum (Diphysciaceae) - Sevier County, Tennessee - April 2022</figcaption>
             </figure>
             <figure class="gallery-item">
-              <a href="images/wisconsin1.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Wisconsin">
-                <img src="images/wisconsin1.JPEG" alt="Botanical fieldwork photograph from Wisconsin" loading="lazy" decoding="async" />
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Dryas%20ajanensis%20(Rosaceae)%20-%20Yukon-Koyukuk%20Borough%2C%20Alaska%2C%20USA%20-%20July%202022.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Dryas ajanensis (Rosaceae) - Yukon-Koyukuk Borough, Alaska, USA - July 2022">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Dryas%20ajanensis%20(Rosaceae)%20-%20Yukon-Koyukuk%20Borough%2C%20Alaska%2C%20USA%20-%20July%202022.JPEG" alt="Dryas ajanensis (Rosaceae) - Yukon-Koyukuk Borough, Alaska, USA - July 2022" loading="lazy" decoding="async" />
               </a>
-              <figcaption>Wisconsin</figcaption>
+              <figcaption>Dryas ajanensis (Rosaceae) - Yukon-Koyukuk Borough, Alaska, USA - July 2022</figcaption>
             </figure>
             <figure class="gallery-item">
-              <a href="images/triphora1.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Three Birds Orchid">
-                <img src="images/triphora1.JPEG" alt="Photograph of the three birds orchid, Triphora trianthophoros" loading="lazy" decoding="async" />
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Harperocallis%20flava%20(Tofieldiaceae)%20-%20Liberty%20County%2C%20Florida%20-%20May%202022.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Harperocallis flava (Tofieldiaceae) - Liberty County, Florida - May 2022">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Harperocallis%20flava%20(Tofieldiaceae)%20-%20Liberty%20County%2C%20Florida%20-%20May%202022.JPEG" alt="Harperocallis flava (Tofieldiaceae) - Liberty County, Florida - May 2022" loading="lazy" decoding="async" />
               </a>
-              <figcaption>Three Birds Orchid</figcaption>
+              <figcaption>Harperocallis flava (Tofieldiaceae) - Liberty County, Florida - May 2022</figcaption>
             </figure>
             <figure class="gallery-item">
-              <a href="images/Vanilla1.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Vanilla Orchid">
-                <img src="images/Vanilla1.JPEG" alt="Photograph of a Vanilla orchid" loading="lazy" decoding="async" />
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Illicium%20floridanum%20(Illiciaceae)%20-%20Liberty%20County%2C%20Florida%20-%20February%202017.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Illicium floridanum (Illiciaceae) - Liberty County, Florida - February 2017">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Illicium%20floridanum%20(Illiciaceae)%20-%20Liberty%20County%2C%20Florida%20-%20February%202017.JPEG" alt="Illicium floridanum (Illiciaceae) - Liberty County, Florida - February 2017" loading="lazy" decoding="async" />
               </a>
-              <figcaption>Vanilla Orchid</figcaption>
+              <figcaption>Illicium floridanum (Illiciaceae) - Liberty County, Florida - February 2017</figcaption>
             </figure>
             <figure class="gallery-item">
-              <a href="images/liverworts.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Bryophytes">
-                <img src="images/liverworts.JPEG" alt="Photograph of liverworts" loading="lazy" decoding="async" />
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Monotropsis%20reynoldsiae%20(Ericaceae)%20-%20Marion%20County%2C%20Florida%20-%20December%202021.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Monotropsis reynoldsiae (Ericaceae) - Marion County, Florida - December 2021">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Monotropsis%20reynoldsiae%20(Ericaceae)%20-%20Marion%20County%2C%20Florida%20-%20December%202021.JPEG" alt="Monotropsis reynoldsiae (Ericaceae) - Marion County, Florida - December 2021" loading="lazy" decoding="async" />
               </a>
-              <figcaption>Bryophytes</figcaption>
+              <figcaption>Monotropsis reynoldsiae (Ericaceae) - Marion County, Florida - December 2021</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Parnassia%20palustris%20(Parnassiaceae)%20-%20Yukon-Koyukuk%20Borough%2C%20Alaska%2C%20USA%20-%20July%202022.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Parnassia palustris (Parnassiaceae) - Yukon-Koyukuk Borough, Alaska, USA - July 2022">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Parnassia%20palustris%20(Parnassiaceae)%20-%20Yukon-Koyukuk%20Borough%2C%20Alaska%2C%20USA%20-%20July%202022.JPEG" alt="Parnassia palustris (Parnassiaceae) - Yukon-Koyukuk Borough, Alaska, USA - July 2022" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>Parnassia palustris (Parnassiaceae) - Yukon-Koyukuk Borough, Alaska, USA - July 2022</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Penstemon%20murrayanus%20(Plantaginaceae)%20-%20Anderson%20County%2C%20Texas%20-%20April%202024.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Penstemon murrayanus (Plantaginaceae) - Anderson County, Texas - April 2024">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Penstemon%20murrayanus%20(Plantaginaceae)%20-%20Anderson%20County%2C%20Texas%20-%20April%202024.JPEG" alt="Penstemon murrayanus (Plantaginaceae) - Anderson County, Texas - April 2024" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>Penstemon murrayanus (Plantaginaceae) - Anderson County, Texas - April 2024</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Spinulum%20canadense%20(Lycopodiaceae)%20-%20Yukon-Koyukuk%20Borough%2C%20Alaska%2C%20USA%20-%20July%202022.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Spinulum canadense (Lycopodiaceae) - Yukon-Koyukuk Borough, Alaska, USA - July 2022">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Spinulum%20canadense%20(Lycopodiaceae)%20-%20Yukon-Koyukuk%20Borough%2C%20Alaska%2C%20USA%20-%20July%202022.JPEG" alt="Spinulum canadense (Lycopodiaceae) - Yukon-Koyukuk Borough, Alaska, USA - July 2022" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>Spinulum canadense (Lycopodiaceae) - Yukon-Koyukuk Borough, Alaska, USA - July 2022</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Splachnum%20ampullaceum%20(Splachnaceae)%20-%20Emmet%20County%2C%20Michigan%20-%20June%202024.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Splachnum ampullaceum (Splachnaceae) - Emmet County, Michigan - June 2024">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Splachnum%20ampullaceum%20(Splachnaceae)%20-%20Emmet%20County%2C%20Michigan%20-%20June%202024.JPEG" alt="Splachnum ampullaceum (Splachnaceae) - Emmet County, Michigan - June 2024" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>Splachnum ampullaceum (Splachnaceae) - Emmet County, Michigan - June 2024</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Streptanthus%20hyacinthoides%20(Brassicaceae)%20-%20Anderson%20County%2C%20Texas%20-%20April%202024.JPG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Streptanthus hyacinthoides (Brassicaceae) - Anderson County, Texas - April 2024">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Streptanthus%20hyacinthoides%20(Brassicaceae)%20-%20Anderson%20County%2C%20Texas%20-%20April%202024.JPG" alt="Streptanthus hyacinthoides (Brassicaceae) - Anderson County, Texas - April 2024" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>Streptanthus hyacinthoides (Brassicaceae) - Anderson County, Texas - April 2024</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <a href="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Triphora%20trianthophoros%20forma%20rossii%20(Orchidaceae)%20-%20Dane%20County%2C%20Wisconsin%20-%20August%202025.JPG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Triphora trianthophoros forma rossii (Orchidaceae) - Dane County, Wisconsin - August 2025">
+                <img src="https://raw.githubusercontent.com/brandoncorder/brandoncorder.github.io/main/images/gallery/Triphora%20trianthophoros%20forma%20rossii%20(Orchidaceae)%20-%20Dane%20County%2C%20Wisconsin%20-%20August%202025.JPG" alt="Triphora trianthophoros forma rossii (Orchidaceae) - Dane County, Wisconsin - August 2025" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>Triphora trianthophoros forma rossii (Orchidaceae) - Dane County, Wisconsin - August 2025</figcaption>
             </figure>
           </div>
         </section>
