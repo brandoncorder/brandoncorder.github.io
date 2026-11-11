@@ -567,3 +567,157 @@ html[data-theme="dark"] body.home-page #fieldwork .fieldwork-title {
     white-space: nowrap;
   }
 }
+
+
+/* =============================================================
+   Awards: compact, chronological groups with a clear hierarchy.
+   ============================================================= */
+#awards.awards-organized .awards-intro {
+  color: #65747a;
+  max-width: 52rem;
+  margin-bottom: 1.6em;
+}
+
+#awards .awards-group {
+  margin: 2em 0 0;
+}
+
+#awards .awards-group > h3 {
+  font-size: 1.35rem;
+  line-height: 1.35;
+  margin: 0 0 0.8em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #dce2e5;
+}
+
+#awards .award-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+#awards .award-row {
+  display: grid;
+  grid-template-columns: minmax(5.25rem, 7rem) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  min-width: 0;
+  padding: 0.95rem 1.15rem;
+  border-radius: 0.35rem;
+  border: 1px solid #e1e6e9;
+  background: #f8fafb;
+}
+
+#awards .award-year {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: #5b6a70;
+}
+
+#awards .award-description {
+  min-width: 0;
+}
+
+#awards .award-description h4 {
+  font-size: 1.06rem;
+  line-height: 1.4;
+  margin: 0 0 0.3em;
+}
+
+#awards .award-description p {
+  color: #65747a;
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+#awards .award-description a {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+}
+
+/* Service copy remains readable without dense nested card styling. */
+.service-group {
+  margin-top: 2em;
+}
+
+.service-group h2 {
+  font-size: 1.4rem;
+  margin: 0 0 0.65em;
+}
+
+/* The Gallery displays real photographs already kept in /images/. */
+.botanical-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.botanical-gallery .gallery-item {
+  margin: 0;
+  min-width: 0;
+}
+
+.botanical-gallery .gallery-item a {
+  display: block;
+  border: 0;
+  overflow: hidden;
+  border-radius: 0.4rem;
+}
+
+.botanical-gallery .gallery-item a:focus-visible {
+  outline: 3px solid #f56a6a;
+  outline-offset: 3px;
+}
+
+.botanical-gallery .gallery-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: cover;
+}
+
+.botanical-gallery .gallery-item figcaption {
+  color: #4d5e65;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.55rem 0 0;
+}
+
+/* Dark-mode contrast matches the rest of the website. */
+html[data-theme="dark"] #awards .awards-intro,
+html[data-theme="dark"] #awards .award-description p,
+html[data-theme="dark"] #awards .award-year,
+html[data-theme="dark"] .botanical-gallery .gallery-item figcaption {
+  color: #c7d5dc;
+}
+
+html[data-theme="dark"] #awards .award-row {
+  background: #1d292e;
+  border-color: #3d4d55;
+}
+
+html[data-theme="dark"] #awards .awards-group > h3 {
+  border-bottom-color: #42545e;
+}
+
+@media screen and (max-width: 480px) {
+  #awards .award-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.2rem;
+    padding: 0.85rem 0.95rem;
+  }
+  .botanical-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 1rem;
+  }
+}
