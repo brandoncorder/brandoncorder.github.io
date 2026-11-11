@@ -19,6 +19,7 @@ PAGES = [
     "research.html",
     "teaching.html",
     "publications.html",
+    "science-communication.html",
     "awards.html",
     "service.html",
     "fieldwork.html",
@@ -26,10 +27,9 @@ PAGES = [
 EXPECTED = [
     ("index.html", "Home"),
     ("aboutme.html", "About Me"),
-    ("research.html", "Research"),
+    ("research.html", "Research and Publications"),
     ("teaching.html", "Teaching and Mentoring"),
-    ("publications.html", "Publications"),
-    ("index.html#science-communication", "Science Communication"),
+    ("science-communication.html", "Science Communication"),
     ("awards.html", "Awards"),
     ("service.html", "Service"),
     ("fieldwork.html", "Fieldwork"),
@@ -100,6 +100,29 @@ def audit() -> list[str]:
                 anchor = r'\bid\s*=\s*["\']' + re.escape(fragment) + r'["\']'
                 if not re.search(anchor, target_html):
                     failures.append(f"{path}: {label} points to missing anchor #{fragment}")
+    # Catch regressions in page consolidation and home page deep links.
+    research = (ROOT / "research.html").read_text(encoding="utf-8")
+    homepage = (ROOT / "index.html").read_text(encoding="utf-8")
+    teaching = (ROOT / "teaching.html").read_text(encoding="utf-8")
+    science = (ROOT / "science-communication.html").read_text(encoding="utf-8")
+    legacy = (ROOT / "publications.html").read_text(encoding="utf-8")
+
+    if 'id="publication-list"' not in research or 'assets/js/publications.js' not in research:
+        failures.append("Research must contain the automatic publication list and renderer")
+    if 'research.html#publications' not in homepage:
+        failures.append("Homepage Publications must link to the Research publications anchor")
+    for label, target in [
+        ("Teaching", 'href="teaching.html"'),
+        ("Mentoring", 'href="teaching.html#mentoring"'),
+    ]:
+        if target not in homepage:
+            failures.append(f"Homepage missing {label} button")
+    if 'id="mentoring"' not in teaching:
+        failures.append("Teaching page is missing the Mentoring anchor")
+    if 'id="science-communication"' not in homepage or 'id="science-communication"' not in science:
+        failures.append("Science Communication must be present on both homepage and dedicated page")
+    if 'url=research.html#publications' not in legacy:
+        failures.append("Legacy publications.html redirect missing")
     return failures
 
 
