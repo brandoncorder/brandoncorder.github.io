@@ -1,0 +1,39 @@
+name: Build browser-sized favicons
+
+# Rebuild image derivatives whenever the uploaded favicon changes.
+# The generated asset commit does not re-trigger this workflow.
+on:
+  push:
+    branches:
+      - main
+      - gallery-nav-favicon-compatibility-2026
+    paths:
+      - images/favicon.png
+      - scripts/build_favicons.py
+      - .github/workflows/build-favicons.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-favicons:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install Pillow
+        run: python -m pip install --quiet Pillow
+      - name: Build optimized icons
+        run: python scripts/build_favicons.py
+      - name: Commit generated assets
+        run: |
+          git add favicon.ico images/favicon-32.png images/apple-touch-icon.png
+          if git diff --cached --quiet; then
+            echo "Favicon assets are already up to date."
+          else
+            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Build optimized favicons from images/favicon.png"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
