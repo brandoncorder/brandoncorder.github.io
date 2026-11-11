@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Publications - Brandon Corder</title>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* Keep publication metadata visually secondary to linked paper titles. */
+    #publication-list .publication-detail { margin: 0.35em 0 1em; color: #7f888f; font-size: 0.93em; }
+    #publication-list ul.alt li { padding: 1em 0; }
+  </style>
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -19,12 +24,34 @@
             <h2>Publications</h2>
           </header>
 
-          <h3>Papers</h3>
-          <ul>
-            <li>Manchester, S., Dilcher, D., Judd, W., Corder, B., Basinger, J. 2018. Early eudicot flower and fruit: <i>Dakotanthus</i> gen. nov. from the Cretaceous Dakota Formation of Kansas and Nebraska, USA. <i>Acta Palaeobotanica</i> 58: 27–40.<br />
-              <strong>DOI:</strong> <a href="https://doi.org/10.2478/acpa-2018-0006" target="_blank">https://doi.org/10.2478/acpa-2018-0006</a>
-            </li>
+          <p>This bibliography includes research papers and other scholarly work. Entries are maintained from my ORCID record (<a href="https://orcid.org/0000-0002-6442-2355" target="_blank" rel="noopener noreferrer">0000-0002-6442-2355</a>), with Crossref as an additional source for publication metadata and a curated list of works.</p>
+
+          <!-- Profile links are plain outbound buttons: no scraping or external tracking scripts. -->
+          <ul class="actions">
+            <li><a href="https://orcid.org/0000-0002-6442-2355" class="button" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+            <li><a href="https://scholar.google.com/citations?user=X1Wl7MUAAAAJ&amp;hl=en" class="button" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+            <li><a href="https://www.researchgate.net/profile/Brandon-Corder-2?ev=hdr_xprf" class="button" target="_blank" rel="noopener noreferrer">ResearchGate</a></li>
           </ul>
+
+          <!--
+            Human-readable fallback, retained when JavaScript is disabled.
+            The publications.js renderer replaces the contents of this element
+            using the checked-in JSON file after a successful load.
+          -->
+          <div id="publication-list">
+            <h3>Journal Articles and Other Papers</h3>
+            <ul class="alt">
+              <li><a href="https://doi.org/10.1093/aob/mcag324" target="_blank" rel="noopener noreferrer">Taxonomic, functional, and phylogenetic structure of Mt. Washington’s woody plant communities (New Hampshire, USA)</a><p class="publication-detail"><em>Annals of Botany</em> · 2026 · DOI: 10.1093/aob/mcag324</p></li>
+              <li><a href="https://doi.org/10.1093/aob/mcag307" target="_blank" rel="noopener noreferrer">Foliar metabolomes of woody plant communities across an elevational gradient on Mount Washington (New Hampshire, USA)</a><p class="publication-detail"><em>Annals of Botany</em> · 2026 · DOI: 10.1093/aob/mcag307</p></li>
+              <li><a href="https://doi.org/10.1093/aob/mcag179" target="_blank" rel="noopener noreferrer">Deciduous and evergreen leaf habit structures intraspecific trait expression along an elevational gradient</a><p class="publication-detail"><em>Annals of Botany</em> · 2026 · DOI: 10.1093/aob/mcag179</p></li>
+              <li><a href="https://ci.lib.ncsu.edu/citation/1469896" target="_blank" rel="noopener noreferrer">A checklist and distributional record for the wild orchids of Wisconsin, USA</a><p class="publication-detail"><em>The Native Orchid Conference Journal</em> · 2026</p></li>
+              <li><a href="https://doi.org/10.2478/acpa-2018-0006" target="_blank" rel="noopener noreferrer">Early eudicot flower and fruit: Dakotanthus gen. nov. from the Cretaceous Dakota Formation of Kansas and Nebraska, USA</a><p class="publication-detail"><em>Acta Palaeobotanica</em> · 2018 · DOI: 10.2478/acpa-2018-0006</p></li>
+            </ul>
+            <h3>Dissertations and Other Scholarly Work</h3>
+            <ul class="alt">
+              <li><a href="https://ci.lib.ncsu.edu/citation/1469897" target="_blank" rel="noopener noreferrer">Trophic Mode Evolution in Orchids: Integrating Regional Isotope, Fungal, and Genomic Approaches</a><p class="publication-detail"><em>Ph.D. dissertation, University of Wisconsin–Madison</em> · 2025</p></li>
+            </ul>
+          </div>
 
           <h3>Presentations</h3>
           <ul>
@@ -48,6 +75,12 @@
           </header>
           <ul>
             <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="fieldwork.html">Fieldwork</a></li>
+            <li><a href="awards.html">Awards</a></li>
           </ul>
         </nav>
         <footer id="footer">
@@ -64,5 +97,6 @@
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/publications.js"></script>
 </body>
 </html>

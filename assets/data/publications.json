@@ -1,0 +1,68 @@
+{
+  "orcid": "0000-0002-6442-2355",
+  "description": "A curated seed collection, periodically supplemented using ORCID and Crossref metadata. Manual entries are retained when APIs are unavailable.",
+  "last_checked": "2026-11-11",
+  "source_status": "ORCID: 6 qualifying records; Crossref: 3 qualifying records",
+  "publications": [
+    {
+      "title": "A checklist and distributional record for the wild orchids of Wisconsin, USA",
+      "year": 2026,
+      "venue": "The Native Orchid Conference Journal",
+      "doi": "",
+      "url": "https://ci.lib.ncsu.edu/citation/1469896",
+      "type": "journal-article",
+      "source": "ORCID",
+      "manual": true
+    },
+    {
+      "title": "Deciduous and evergreen leaf habit structures intraspecific trait expression along an elevational gradient",
+      "year": 2026,
+      "venue": "Annals of Botany",
+      "doi": "10.1093/aob/mcag179",
+      "url": "https://doi.org/10.1093/aob/mcag179",
+      "type": "journal-article",
+      "source": "Crossref",
+      "manual": true
+    },
+    {
+      "title": "Foliar metabolomes of woody plant communities across an elevational gradient on Mount Washington (New Hampshire, USA)",
+      "year": 2026,
+      "venue": "Annals of Botany",
+      "doi": "10.1093/aob/mcag307",
+      "url": "https://doi.org/10.1093/aob/mcag307",
+      "type": "journal-article",
+      "source": "Crossref",
+      "manual": true
+    },
+    {
+      "title": "Taxonomic, functional, and phylogenetic structure of Mt. Washington’s woody plant communities (New Hampshire, USA)",
+      "year": 2026,
+      "venue": "Annals of Botany",
+      "doi": "10.1093/aob/mcag324",
+      "url": "https://doi.org/10.1093/aob/mcag324",
+      "type": "journal-article",
+      "source": "Crossref",
+      "manual": true
+    },
+    {
+      "title": "Trophic Mode Evolution in Orchids: Integrating Regional Isotope, Fungal, and Genomic Approaches",
+      "year": 2025,
+      "venue": "Ph.D. dissertation, University of Wisconsin–Madison",
+      "doi": "",
+      "url": "https://ci.lib.ncsu.edu/citation/1469897",
+      "type": "dissertation",
+      "source": "ORCID",
+      "manual": true
+    },
+    {
+      "title": "Early eudicot flower and fruit: Dakotanthus gen. nov. from the Cretaceous Dakota Formation of Kansas and Nebraska, USA",
+      "year": 2018,
+      "venue": "Acta Palaeobotanica",
+      "doi": "10.2478/acpa-2018-0006",
+      "url": "https://doi.org/10.2478/acpa-2018-0006",
+      "type": "journal-article",
+      "source": "ORCID",
+      "manual": true
+    }
+  ]
+}
