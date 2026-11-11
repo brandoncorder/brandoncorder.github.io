@@ -68,6 +68,23 @@ def crossref_authors(work: dict) -> list[dict]:
     return authors
 
 
+def crossref_published_date(work: dict) -> str:
+    """Use online publication date when available for ordering recent papers."""
+    for field in ("published-online", "published", "published-print", "issued"):
+        parts = (work.get(field) or {}).get("date-parts") or []
+        if not parts or not parts[0]:
+            continue
+        values = parts[0]
+        try:
+            year = int(values[0])
+            month = int(values[1]) if len(values) > 1 else 1
+            day = int(values[2]) if len(values) > 2 else 1
+            return f"{year:04d}-{month:02d}-{day:02d}"
+        except (TypeError, ValueError):
+            continue
+    return ""
+
+
 def enrich_authors_by_doi(records: list[dict]) -> None:
     """Resolve DOI author lists, including records missing the queried ORCID."""
     for record in records:
@@ -80,6 +97,9 @@ def enrich_authors_by_doi(records: list[dict]) -> None:
             authors = crossref_authors(work)
             if authors:
                 record["authors"] = authors
+            published = crossref_published_date(work)
+            if published:
+                record["published_date"] = published
         except (HTTPError, URLError, TimeoutError, ValueError, KeyError) as exc:
             print(f"Could not refresh DOI author list for {doi}: {type(exc).__name__}",
                   file=sys.stderr)
