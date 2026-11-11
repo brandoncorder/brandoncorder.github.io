@@ -24,6 +24,7 @@ PAGES = [
     "service.html",
     "fieldwork.html",
     "collections.html",
+    "gallery.html",
 ]
 EXPECTED = [
     ("index.html", "Home"),
@@ -33,6 +34,7 @@ EXPECTED = [
     ("science-communication.html", "Science Communication"),
     ("service.html", "Service and Outreach"),
     ("fieldwork.html", "Fieldwork"),
+    ("gallery.html", "Gallery"),
     ("collections.html", "Collections"),
 ]
 CONTACTS = ("mailto:bdcorder@ncsu.edu", "mailto:brandoncorder95@gmail.com")
@@ -215,7 +217,7 @@ def audit() -> list[str]:
             failures.append(f"{page_name}: unexpected count of theme switches")
         if page.count('data-theme-system') != 2:
             failures.append(f"{page_name}: missing system preference reset button")
-        if 'assets/css/site-overrides.css?v=20261111c' not in page:
+        if 'assets/css/site-overrides.css?v=20261111d' not in page:
             failures.append(f"{page_name}: stylesheet cache version not updated")
     if 'theme-toggle-compact' in homepage:
         failures.append("Homepage still has a desktop header theme switch")
@@ -223,6 +225,42 @@ def audit() -> list[str]:
         failures.append("Fall 2027 Plant Geography course is missing")
     if "Featured by NC State" in teaching or "Read more about my appointment in NC State's faculty introduction" not in teaching:
         failures.append("NC State faculty introduction must be an inline link, not a feature card")
+
+    # Gallery is populated with existing local photos, not external placeholders.
+    gallery_html = (ROOT / "gallery.html").read_text(encoding="utf-8")
+    local_photos = re.findall(r'<img[^>]*src="(images/[^"]+)"', gallery_html)
+    if len(local_photos) < 6:
+        failures.append("Gallery should contain at least six botanical photographs")
+    for photo in local_photos:
+        if not (ROOT / photo).is_file():
+            failures.append(f"Gallery photo missing: {photo}")
+    if '<li><a href="gallery.html">Gallery</a></li>' not in gallery_html:
+        failures.append("Gallery does not include its own navigation link")
+
+    # Preserve the main iNaturalist CTA while removing the broken FA5 leaf icon.
+    if 'icon brands fa-leaf' in homepage:
+        failures.append("Blank iNaturalist social icon is still present")
+    if 'View iNaturalist</a>' not in homepage:
+        failures.append("Main iNaturalist profile button was removed")
+
+    # Awards keep the preliminary About Me placeholder, but display recognition
+    # in ordered, accessible groups with clearer dates and smaller titles.
+    for section_id in ("teaching-awards", "research-awards", "fellowships-grants"):
+        if f'id="{section_id}"' not in about:
+            failures.append(f"Awards group missing: {section_id}")
+    if about.count('class="award-row"') < 12:
+        failures.append("Awards timeline appears incomplete")
+    for selector in ('.award-row', '.award-year', '.botanical-gallery', '.gallery-item'):
+        if selector not in theme_css:
+            failures.append(f"Missing gallery/awards CSS selector {selector}")
+
+    # User-confirmed professional and community service.
+    for detail in ("Native Orchid Conference", "Botanical Club of Wisconsin",
+                   "Botanical Society of America", "American Journal of Botany",
+                   "Phytotaxa", "iNaturalist", "NC State University"):
+        if detail not in service:
+            failures.append(f"Service page missing: {detail}")
+
 
     return failures
 
