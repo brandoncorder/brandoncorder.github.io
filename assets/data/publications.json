@@ -2,7 +2,7 @@
   "orcid": "0000-0002-6442-2355",
   "description": "A curated seed collection, periodically supplemented using ORCID and Crossref metadata. Manual entries are retained when APIs are unavailable.",
   "last_checked": "2026-11-11",
-  "source_status": "ORCID: 5 qualifying records; Crossref: 3 qualifying records",
+  "source_status": "ORCID: 6 qualifying records; Crossref: 3 qualifying records",
   "publications": [
     {
       "title": "A checklist and distributional record for the wild orchids of Wisconsin, USA",
@@ -11,6 +11,7 @@
       "doi": "",
       "url": "https://ci.lib.ncsu.edu/citation/1469896",
       "type": "journal-article",
+      "source": "ORCID",
       "manual": true
     },
     {
@@ -20,6 +21,7 @@
       "doi": "10.1093/aob/mcag179",
       "url": "https://doi.org/10.1093/aob/mcag179",
       "type": "journal-article",
+      "source": "Crossref",
       "manual": true
     },
     {
@@ -29,6 +31,7 @@
       "doi": "10.1093/aob/mcag307",
       "url": "https://doi.org/10.1093/aob/mcag307",
       "type": "journal-article",
+      "source": "Crossref",
       "manual": true
     },
     {
@@ -38,6 +41,7 @@
       "doi": "10.1093/aob/mcag324",
       "url": "https://doi.org/10.1093/aob/mcag324",
       "type": "journal-article",
+      "source": "Crossref",
       "manual": true
     },
     {
@@ -47,6 +51,7 @@
       "doi": "",
       "url": "https://ci.lib.ncsu.edu/citation/1469897",
       "type": "dissertation",
+      "source": "ORCID",
       "manual": true
     },
     {
@@ -56,6 +61,7 @@
       "doi": "10.2478/acpa-2018-0006",
       "url": "https://doi.org/10.2478/acpa-2018-0006",
       "type": "journal-article",
+      "source": "ORCID",
       "manual": true
     }
   ]
