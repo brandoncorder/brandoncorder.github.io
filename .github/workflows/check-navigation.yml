@@ -7,6 +7,7 @@ on:
       - 'scripts/check_navigation.py'
       - 'assets/css/site-overrides.css'
       - 'assets/js/theme.js'
+      - 'scripts/test_theme.js'
       - '.github/workflows/check-navigation.yml'
   pull_request:
     paths:
@@ -14,6 +15,7 @@ on:
       - 'scripts/check_navigation.py'
       - 'assets/css/site-overrides.css'
       - 'assets/js/theme.js'
+      - 'scripts/test_theme.js'
       - '.github/workflows/check-navigation.yml'
   workflow_dispatch:
 
@@ -30,3 +32,5 @@ jobs:
         run: python3 scripts/check_navigation.py
       - name: Check theme JavaScript syntax
         run: node --check assets/js/theme.js
+      - name: Test OS appearance and theme toggling
+        run: node scripts/test_theme.js
