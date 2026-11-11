@@ -25,6 +25,8 @@
     .icon.brands.fa-leaf {
       color: #6b8e23;
     }
+    #publication-list .publication-authors { margin: 0.2em 0 0.3em; font-size: 0.9em; line-height: 1.55; }
+    #publication-list .publication-detail { margin: 0.2em 0 1em; color: #7f888f; font-size: 0.88em; }
   </style>
 
   <!-- Load fallback styles if JS is disabled -->
@@ -120,13 +122,22 @@
 <header class="major"><h2>Publications</h2></header>
 <!-- The shared renderer replaces these three static fallback entries from publications.json. -->
 <div id="publication-list" data-limit="3">
-  <h3>Recent Papers</h3>
-  <ul class="alt">
-    <li><a href="https://doi.org/10.1093/aob/mcag324" target="_blank" rel="noopener noreferrer">Taxonomic, functional, and phylogenetic structure of Mt. Washington’s woody plant communities</a><p><em>Annals of Botany</em> · 2026</p></li>
-    <li><a href="https://doi.org/10.1093/aob/mcag307" target="_blank" rel="noopener noreferrer">Foliar metabolomes of woody plant communities across an elevational gradient on Mount Washington</a><p><em>Annals of Botany</em> · 2026</p></li>
-    <li><a href="https://doi.org/10.1093/aob/mcag179" target="_blank" rel="noopener noreferrer">Deciduous and evergreen leaf habit structures intraspecific trait expression along an elevational gradient</a><p><em>Annals of Botany</em> · 2026</p></li>
-  </ul>
-</div>
+    <h3>Recent Papers</h3>
+    <ul class="alt">
+      <li><a href="https://doi.org/10.1093/aob/mcag324" target="_blank" rel="noopener noreferrer">Taxonomic, functional, and phylogenetic structure of Mt. Washington’s woody plant communities (New Hampshire, USA)</a>
+        <p class="publication-authors">Nathan G Kiel, Michael S Peyton, Sam W Anderson, Katherine T Charton, <strong>Brandon D Corder</strong>, Patricia W Chan, Jordon C Tourville, Lena N Berry, Linden A Taylor, Tyler H Wintermute, Thomas J Givnish</p>
+        <p class="publication-detail"><em>Annals of Botany</em> · 2026 · DOI: 10.1093/aob/mcag324</p>
+      </li>
+      <li><a href="https://doi.org/10.1093/aob/mcag307" target="_blank" rel="noopener noreferrer">Foliar metabolomes of woody plant communities across an elevational gradient on Mount Washington (New Hampshire, USA)</a>
+        <p class="publication-authors">Tyler H Wintermute, Linden A Taylor, Michael S Peyton, Nathan G Kiel, Lena N Berry, Katherine T Charton, Sam W Anderson, Patricia W Chan, <strong>Brandon D Corder</strong>, Jordon Tourville, Thomas J Givnish</p>
+        <p class="publication-detail"><em>Annals of Botany</em> · 2026 · DOI: 10.1093/aob/mcag307</p>
+      </li>
+      <li><a href="https://doi.org/10.1093/aob/mcag179" target="_blank" rel="noopener noreferrer">Deciduous and evergreen leaf habit structures intraspecific trait expression along an elevational gradient</a>
+        <p class="publication-authors">Michael S Peyton, Katherine T Charton, Nathan G Kiel, Tyler H Wintermute, Jordon C Tourville, Sam W Anderson, Lena N Berry, <strong>Brandon D Corder</strong>, Patricia W Chan, Linden A Taylor, Thomas J Givnish</p>
+        <p class="publication-detail"><em>Annals of Botany</em> · 2026 · DOI: 10.1093/aob/mcag179</p>
+      </li>
+    </ul>
+  </div>
 <ul class="actions">
   <li><a href="research.html" class="button">Research Page</a></li>
   <li><a href="https://scholar.google.com/citations?user=X1Wl7MUAAAAJ&amp;hl=en" class="button" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
