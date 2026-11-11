@@ -198,6 +198,10 @@ def audit() -> list[str]:
         'flex-wrap: wrap',
         'html[data-theme="dark"]',
         '.theme-toggle:focus-visible',
+        '#main .inner ul.actions',
+        'flex-wrap: wrap',
+        '#fieldwork .fieldwork-title',
+        '#main > .inner > .mobile-theme-controls',
     ]:
         if required not in theme_css:
             failures.append(f"Theme stylesheet missing {required}")
@@ -207,14 +211,20 @@ def audit() -> list[str]:
             failures.append(f"{page_name}: theme script not loaded in the head")
         if 'class="theme-switcher"' not in page:
             failures.append(f"{page_name}: missing sidebar theme switcher")
-        if page.count('data-theme-toggle') != (2 if page_name == "index.html" else 1):
+        if 'class="mobile-theme-controls"' not in page:
+            failures.append(f"{page_name}: missing mobile-only appearance row")
+        if page.count('data-theme-toggle') != 2:
             failures.append(f"{page_name}: unexpected count of theme switches")
-        if page.count('data-theme-system') != 1:
+        if page.count('data-theme-system') != 2:
             failures.append(f"{page_name}: missing system preference reset button")
-        if 'assets/css/site-overrides.css?v=20261111b' not in page:
+        if 'assets/css/site-overrides.css?v=20261111c' not in page:
             failures.append(f"{page_name}: stylesheet cache version not updated")
-    if 'theme-toggle-compact' not in homepage:
-        failures.append("Homepage missing compact header theme switch")
+    if 'theme-toggle-compact' in homepage:
+        failures.append("Homepage still has a desktop header theme switch")
+    if '<h3>PB ### — Plant Geography</h3>' not in teaching or 'Fall 2027' not in teaching:
+        failures.append("Fall 2027 Plant Geography course is missing")
+    if "Featured by NC State" in teaching or "Read more about my appointment in NC State's faculty introduction" not in teaching:
+        failures.append("NC State faculty introduction must be an inline link, not a feature card")
 
     return failures
 
