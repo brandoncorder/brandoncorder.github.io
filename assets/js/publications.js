@@ -88,8 +88,14 @@
             item.type === "book";
         });
         if (!valid.length) throw new Error("No valid publications in dataset");
+        var previewLimit = Number(target.getAttribute("data-limit")) || 0;
+        if (previewLimit > 0) {
+          journals = journals.slice(0, previewLimit);
+          others = []; // The homepage shows journal papers only.
+        }
         var fragment = document.createDocumentFragment();
-        renderGroup(fragment, "Journal Articles and Other Papers", journals);
+        renderGroup(fragment, previewLimit > 0 ? "Recent Papers" :
+          "Journal Articles and Other Papers", journals);
         renderGroup(fragment, "Dissertations and Other Scholarly Work", others);
         target.replaceChildren(fragment);
       })
