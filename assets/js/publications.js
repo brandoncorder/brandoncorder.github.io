@@ -31,10 +31,10 @@
       if (String(author.orcid || "").endsWith("0000-0002-6442-2355")) return true;
       var family = String(author.family || "").trim().toLowerCase();
       var given = String(author.given || "").trim();
-      if (family === "corder" && /^(brandon|b)\\b/i.test(given)) return true;
+      if (family === "corder" && /^(brandon|b)\b/i.test(given)) return true;
     }
     var name = authorName(author);
-    return /\\b(brandon(?:\\s+d(?:ev)?\\.?|\\s+dev)?\\s+corder|b\\.?\\s*(?:d\\.?\\s*)?corder|corder,?\\s*(?:brandon|b\\.?))/i.test(name);
+    return /\b(brandon(?:\s+d(?:ev)?\.?|\s+dev)?\s+corder|b\.?\s*(?:d\.?\s*)?corder|corder,?\s*(?:brandon|b\.?))/i.test(name);
   }
 
   function appendAuthors(li, authors) {
