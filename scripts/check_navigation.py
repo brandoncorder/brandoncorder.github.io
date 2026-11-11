@@ -226,36 +226,37 @@ def audit() -> list[str]:
     if "Featured by NC State" in teaching or "Read more about my appointment in NC State's faculty introduction" not in teaching:
         failures.append("NC State faculty introduction must be an inline link, not a feature card")
 
-    # Gallery is populated with existing local photos, not external placeholders.
+    # Gallery is now a fully static page with a real HTML fallback for
+    # existing photos, plus a JavaScript fetch of the public GitHub folder.
+    # No Jekyll processing or Pages rebuild is needed for future uploads.
     gallery_html = (ROOT / "gallery.html").read_text(encoding="utf-8")
-    local_photos = re.findall(r'<img[^>]*src="(images/[^"]+)"', gallery_html)
-    if len(local_photos) < 6:
-        failures.append("Gallery should contain at least six botanical photographs")
-    for photo in local_photos:
-        if not (ROOT / photo).is_file():
-            failures.append(f"Gallery photo missing: {photo}")
-    if '<li><a href="gallery.html">Gallery</a></li>' not in gallery_html:
-        failures.append("Gallery does not include its own navigation link")
-    # Gallery uploads must remain automatic: Jekyll builds the image list from
-    # images/gallery/ and displays each filename stem unchanged as a caption.
+    gallery_js = ROOT / "assets/js/gallery.js"
+    gallery_test = ROOT / "scripts/test_gallery.js"
+    if gallery_html.startswith("---") or "site.static_files" in gallery_html:
+        failures.append("Gallery still depends on a Jekyll build")
+    if 'id="gallery-grid"' not in gallery_html or 'id="gallery-status"' not in gallery_html:
+        failures.append("Gallery grid or live update status missing")
+    if '<script src="assets/js/gallery.js?v=20261111-3" defer></script>' not in gallery_html:
+        failures.append("Gallery must load live photo updater")
+    if gallery_html.count('class="gallery-item"') < 13:
+        failures.append("Gallery is missing the saved photo fallback")
+    for legacy in ("images/alaska1.JPEG", "images/isleroyale1.JPEG",
+                   "images/mountwash1.JPEG", "images/liverworts.JPEG"):
+        if legacy in gallery_html:
+            failures.append(f"Old hard-coded photograph still on Gallery: {legacy}")
     if not (ROOT / "images/gallery/README.md").is_file():
-        failures.append("images/gallery/ upload folder or instructions missing")
-    if (ROOT / ".nojekyll").exists():
-        failures.append("Jekyll must remain enabled for automatic gallery file listing")
-    if gallery_html.splitlines()[:3] != ["---", "layout: null", "---"]:
-        failures.append("gallery.html must have Jekyll front matter")
-    for required in (
-        "site.static_files",
-        "photo.path contains '/images/gallery/'",
-        'sort: "name"',
-        "photo.extname | downcase",
-        "photo.basename | escape",
-        "photo.path | relative_url | escape",
-        "gallery_photo_count",
-    ):
-        if required not in gallery_html:
-            failures.append(f"Automatic gallery template missing: {required}")
-
+        failures.append("Gallery upload folder missing")
+    if not gallery_js.is_file() or not gallery_test.is_file():
+        failures.append("Live Gallery script or behavior tests missing")
+    else:
+        script = gallery_js.read_text(encoding="utf-8")
+        for term in ("api.github.com/repos/brandoncorder", "images/gallery?ref=main",
+                     "raw.githubusercontent.com", "file.name", "replaceChildren",
+                     "encodeURIComponent", "textContent"):
+            if term not in script:
+                failures.append(f"Live Gallery script missing: {term}")
+    if '<li><a href="gallery.html">Gallery</a></li>' not in gallery_html:
+        failures.append("Gallery page missing its navigation link")
 
     # Preserve the main iNaturalist CTA while removing the broken FA5 leaf icon.
     if 'icon brands fa-leaf' in homepage:
@@ -282,23 +283,31 @@ def audit() -> list[str]:
             failures.append(f"Service page missing: {detail}")
 
 
-    # Verify the uploaded PNG and the icon reference on each page.
+    # Browser-sized assets are generated from the user-uploaded source. Make
+    # sure both the actual ICO and optimized PNGs have been committed.
     favicon = ROOT / "images/favicon.png"
-    if not favicon.is_file():
-        failures.append("images/favicon.png is missing")
-    elif favicon.read_bytes()[:8] != bytes.fromhex("89504e470d0a1a0a"):
-        failures.append("images/favicon.png does not have a valid PNG signature")
+    if not favicon.is_file() or favicon.read_bytes()[:8] != bytes.fromhex("89504e470d0a1a0a"):
+        failures.append("Original images/favicon.png PNG missing or invalid")
+    ico = ROOT / "favicon.ico"
+    if not ico.is_file() or ico.read_bytes()[:4] != bytes.fromhex("00000100"):
+        failures.append("Root favicon.ico missing or invalid")
+    for icon in ("images/favicon-32.png", "images/apple-touch-icon.png"):
+        path = ROOT / icon
+        if not path.is_file() or path.read_bytes()[:8] != bytes.fromhex("89504e470d0a1a0a"):
+            failures.append(f"Browser favicon image missing or invalid: {icon}")
+    required_icons = (
+        '<link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261111-3" sizes="any" />',
+        '<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=20261111-3" />',
+        '<link rel="shortcut icon" href="/favicon.ico?v=20261111-3" />',
+        '<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=20261111-3" />',
+    )
     for page_name in PAGES:
         page = (ROOT / page_name).read_text(encoding="utf-8")
-        for icon_ref in (
-            '<link rel="icon" type="image/png" href="/images/favicon.png?v=20261111-2" />',
-            '<link rel="shortcut icon" href="/images/favicon.png?v=20261111-2" type="image/png" />',
-            '<link rel="apple-touch-icon" href="/images/favicon.png?v=20261111-2" />',
-        ):
+        for icon_ref in required_icons:
             if page.count(icon_ref) != 1:
-                failures.append(f"{page_name}: missing or duplicated browser icon: {icon_ref}")
-        if 'favicon.png?v=1' in page:
-            failures.append(f"{page_name}: old cached favicon URL remains")
+                failures.append(f"{page_name}: favicon link missing or duplicated: {icon_ref}")
+        if 'favicon.png?v=20261111-2' in page:
+            failures.append(f"{page_name}: stale favicon reference remains")
 
     # The optimization source and workflow must stay in sync. The generated
     # icon files are checked after the build workflow has produced them.
