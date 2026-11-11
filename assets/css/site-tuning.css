@@ -1,0 +1,86 @@
+/*
+ * Academic-site typography and spacing adjustments.
+ * Loaded after the original HTML5 UP main.css on every page.
+ * Keep page-title sizing consistent without changing the sidebar headings.
+ */
+
+/* Main page headings: smaller than the original theme's 3.5–4em H1. */
+#main h1.page-title {
+  font-size: 2.65em;
+  line-height: 1.2;
+  margin: 0 0 0.4em;
+}
+
+/* The theme leaves two whole ems below every heading's underline. */
+#main header.major > :last-child {
+  margin-bottom: 0.8em;
+  padding-bottom: 0.4em;
+}
+#main .inner > section > header.major {
+  margin-bottom: 1.15em;
+}
+
+/* More compact breathing room between the main homepage sections. */
+#main > .inner > section {
+  padding-top: 3.1em;
+  padding-bottom: 2.15em;
+}
+#main > .inner > section:first-of-type {
+  padding-top: 3em;
+}
+#main #banner {
+  padding-top: 2.5em;
+  padding-bottom: 2.5em;
+}
+#main #banner .content > header {
+  margin-bottom: 1.25em;
+}
+
+/* Highlight the name in the homepage masthead, not the entire subtitle. */
+body.home-page #header .logo strong {
+  font-size: 1.48em;
+  line-height: 1.2;
+}
+
+/* Both previous-teaching tables share the same Year-column width. */
+#previous-teaching .teaching-history-table {
+  table-layout: fixed;
+  width: 100%;
+}
+#previous-teaching .teaching-history-table col.year-column {
+  width: 10em;
+}
+#previous-teaching .teaching-history-table th,
+#previous-teaching .teaching-history-table td {
+  vertical-align: top;
+}
+
+/* On research, journal and year details should be more readable than author lists. */
+#main #publication-list .publication-authors {
+  font-size: 0.9em;
+  line-height: 1.55;
+}
+#main #publication-list .publication-detail {
+  font-size: 1.045em;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 736px) {
+  #main h1.page-title {
+    font-size: 2.25em;
+  }
+  #main > .inner > section {
+    padding-top: 2.1em;
+    padding-bottom: 1.5em;
+  }
+  #main #banner {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  body.home-page #header .logo strong {
+    font-size: 1.3em;
+  }
+  #previous-teaching .teaching-history-table col.year-column {
+    width: 6.75em;
+  }
+}
