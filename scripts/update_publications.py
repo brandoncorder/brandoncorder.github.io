@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "assets" / "data" / "publications.json"
 ORCID = "0000-0002-6442-2355"
 ALLOWED_ORCID_TYPES = {
-    "journal-article", "conference-paper", "book-chapter", "book",
+    "journal-article", "conference-paper", "book-chapter", "book", "dissertation",
 }
 ALLOWED_CROSSREF_TYPES = {
     "journal-article", "proceedings-article", "book-chapter", "book",
@@ -80,14 +80,14 @@ def read_orcid_works() -> list[dict]:
     kinds = {}
     for group in groups:
         for work in group.get("work-summary") or []:
-            kind = str(work.get("publication-type") or "(missing)")
+            kind = str(work.get("type") or work.get("publication-type") or "(missing)")
             kinds[kind] = kinds.get(kind, 0) + 1
     print(f"ORCID public record: {len(groups)} groups; work types: {kinds}")
 
     for group in groups:
         summaries = group.get("work-summary") or []
         for work in summaries:
-            work_type = str(work.get("publication-type") or "").lower()
+            work_type = str(work.get("type") or work.get("publication-type") or "").lower()
             if work_type not in ALLOWED_ORCID_TYPES:
                 continue
             title_info = work.get("title") or {}
@@ -112,7 +112,7 @@ def read_orcid_works() -> list[dict]:
                 "venue": journal_info.get("value") or "",
                 "doi": doi,
                 "url": link,
-                "type": "journal-article" if work_type == "journal-article" else "other",
+                "type": "journal-article" if work_type == "journal-article" else ("dissertation" if work_type == "dissertation" else "other"),
                 "source": "ORCID",
             })
             break  # One preferred summary per ORCID work group
