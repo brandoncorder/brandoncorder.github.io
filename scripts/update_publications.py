@@ -62,7 +62,7 @@ def crossref_authors(work: dict) -> list[dict]:
             continue
         author = {"given": given, "family": family} if family else {"name": full_name}
         orcid_id = str(entry.get("ORCID") or "").rstrip("/").split("/")[-1]
-        if re.fullmatch(r"\\d{4}-\\d{4}-\\d{4}-[\\dX]{4}", orcid_id):
+        if re.fullmatch(r"\d{4}-\d{4}-\d{4}-[\dX]{4}", orcid_id):
             author["orcid"] = orcid_id
         authors.append(author)
     return authors
