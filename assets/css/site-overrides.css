@@ -476,3 +476,94 @@ html[data-theme="dark"] .theme-system-button[aria-pressed="true"] {
   }
 }
 
+
+
+/* =============================================================
+   Mobile width and appearance refinements (November 2026)
+   ============================================================= */
+
+/* All button rows (including the ResearchGate link) may wrap when they
+   exceed the page width. Avoid the HTML5 UP nowrap button overflow. */
+#main .inner ul.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  min-width: 0;
+  max-width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+}
+#main .inner ul.actions > li {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+#main .inner ul.actions > li > .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 3.2em;
+  height: auto;
+  padding: 0.7em 1.25em;
+  line-height: 1.4;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+/* Long article titles and DOI links should not widen the viewport. */
+#publication-list a,
+#publication-list .publication-detail {
+  overflow-wrap: anywhere;
+}
+
+/* Higher-contrast location captions in dark mode on the homepage. */
+html[data-theme="dark"] body.home-page #fieldwork .fieldwork-title {
+  color: #edf3f6;
+  font-weight: 600;
+}
+
+/* Keep mobile appearance controls in normal document flow (rather than
+   floating over the homepage's social links or buttons). */
+#main > .inner > .mobile-theme-controls {
+  display: none;
+}
+
+@media screen and (max-width: 736px) {
+  #main > .inner > .mobile-theme-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 6;
+    max-width: 100%;
+    padding: 0.75rem 0 0;
+  }
+
+  /* The sidebar theme controls remain in place on desktop, but aren't
+     duplicated in the mobile slide-out navigation. */
+  #sidebar > .inner > .theme-switcher {
+    display: none;
+  }
+
+  #main > .inner > .mobile-theme-controls .mobile-theme-toggle {
+    width: 2.65rem;
+    min-width: 2.65rem;
+    min-height: 2.5rem;
+    padding: 0.4rem;
+  }
+
+  #main > .inner > .mobile-theme-controls .mobile-theme-toggle .theme-toggle-label {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
