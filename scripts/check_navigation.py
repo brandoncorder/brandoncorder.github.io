@@ -234,8 +234,10 @@ def audit() -> list[str]:
     gallery_test = ROOT / "scripts/test_gallery.js"
     if gallery_html.startswith("---") or "site.static_files" in gallery_html:
         failures.append("Gallery still depends on a Jekyll build")
-    if 'id="gallery-grid"' not in gallery_html or 'id="gallery-status"' not in gallery_html:
-        failures.append("Gallery grid or live update status missing")
+    if 'id="gallery-grid"' not in gallery_html:
+        failures.append("Gallery photo grid missing")
+    if 'id="gallery-status"' in gallery_html or "Botanical photographs uploaded to the Gallery folder" in gallery_html:
+        failures.append("Gallery introduction or photograph counter reappeared")
     if '<script src="assets/js/gallery.js?v=20261111-3" defer></script>' not in gallery_html:
         failures.append("Gallery must load live photo updater")
     if gallery_html.count('class="gallery-item"') < 13:
@@ -275,12 +277,14 @@ def audit() -> list[str]:
         if selector not in theme_css:
             failures.append(f"Missing gallery/awards CSS selector {selector}")
 
-    # User-confirmed professional and community service.
-    for detail in ("Native Orchid Conference", "Botanical Club of Wisconsin",
-                   "Botanical Society of America", "American Journal of Botany",
-                   "Phytotaxa", "iNaturalist", "NC State University"):
-        if detail not in service:
-            failures.append(f"Service page missing: {detail}")
+    # The Service page intentionally retains only a placeholder for now.
+    if "[Content coming soon]" not in service:
+        failures.append("Service and Outreach placeholder missing")
+    for removed_detail in ("Native Orchid Conference", "Botanical Club of Wisconsin",
+                           "American Journal of Botany", "Phytotaxa",
+                           'id="professional-service"', 'id="peer-review"'):
+        if removed_detail in service:
+            failures.append(f"Service draft content remains: {removed_detail}")
 
 
     # Browser-sized assets are generated from the user-uploaded source. Make

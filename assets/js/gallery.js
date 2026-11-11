@@ -48,8 +48,7 @@
 
   async function refreshGallery() {
     var grid = document.getElementById("gallery-grid");
-    var status = document.getElementById("gallery-status");
-    if (!grid || !status) return;
+    if (!grid) return;
 
     try {
       var response = await window.fetch(endpoint, {
@@ -74,13 +73,9 @@
       });
 
       grid.replaceChildren(fragment);
-      status.textContent = photos.length
-        ? photos.length + (photos.length === 1 ? " photograph" : " photographs")
-        : "No photographs have been uploaded yet.";
     } catch (error) {
       // Leave the static HTML snapshot visible when the API is unavailable
       // or its public rate limit has been reached.
-      status.textContent = "Showing saved photographs. Live updates are temporarily unavailable.";
       if (window.console && typeof window.console.warn === "function") {
         window.console.warn("Gallery sync unavailable:", error);
       }
