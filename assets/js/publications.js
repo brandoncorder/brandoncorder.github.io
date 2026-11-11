@@ -114,6 +114,7 @@
           return item && typeof item.title === "string" && item.title.trim();
         }).sort(function (a, b) {
           return (Number(b.year) || 0) - (Number(a.year) || 0) ||
+            String(b.published_date || "").localeCompare(String(a.published_date || "")) ||
             String(a.title).localeCompare(String(b.title));
         });
 
