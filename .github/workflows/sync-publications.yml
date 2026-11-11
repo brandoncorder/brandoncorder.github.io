@@ -9,12 +9,16 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - research-refresh-nov-2026
+      - main
       - site-structure-presentations-authors-2026
     paths:
       - '.github/workflows/sync-publications.yml'
       - 'scripts/update_publications.py'
       - 'assets/data/publications.json'
+
+concurrency:
+  group: bibliography-sync-${{ github.ref }}
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -30,6 +34,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Validate publication pipeline
+        run: |
+          python -m py_compile scripts/update_publications.py
+          node --check assets/js/publications.js
       - name: Fetch public ORCID and Crossref records
         run: python scripts/update_publications.py
       - name: Commit updated data when it changes
@@ -42,4 +50,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/data/publications.json
           git commit -m "Refresh publications from ORCID and Crossref"
-          git push
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
