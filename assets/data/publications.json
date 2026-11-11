@@ -2,7 +2,7 @@
   "orcid": "0000-0002-6442-2355",
   "description": "A curated seed collection, periodically supplemented using ORCID and Crossref metadata. Manual entries are retained when APIs are unavailable.",
   "last_checked": "2026-11-11",
-  "source_status": "ORCID: 0 qualifying records; Crossref: 3 qualifying records",
+  "source_status": "ORCID: 5 qualifying records; Crossref: 3 qualifying records",
   "publications": [
     {
       "title": "A checklist and distributional record for the wild orchids of Wisconsin, USA",
