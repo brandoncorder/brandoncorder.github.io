@@ -32,6 +32,7 @@
   <!-- Load fallback styles if JS is disabled -->
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
   <link rel="stylesheet" href="assets/css/site-overrides.css" />
+  <script src="assets/js/theme.js"></script>
 </head>
 
 <body class="is-preload home-page">
@@ -48,7 +49,8 @@
           <li><a href="https://www.inaturalist.org/people/970009" class="icon brands fa-leaf"><span class="label">iNaturalist</span></a></li>
           <li><a href="https://www.linkedin.com/in/brandon-corder-a7998a106/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
           <li><a href="https://github.com/brandoncorder" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-        </ul>
+                  <li><button type="button" class="theme-toggle theme-toggle-compact" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode"><span class="theme-toggle-symbol" aria-hidden="true">☾</span><span class="theme-toggle-label">Dark mode</span></button></li>
+</ul>
       </header>
 
       <!-- Introduction -->
@@ -237,7 +239,13 @@
 <div id="sidebar">
   <div class="inner">
 
-    <nav id="menu" aria-label="Site navigation">
+    <div class="theme-switcher">
+          <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+            <span class="theme-toggle-symbol" aria-hidden="true">☾</span>
+            <span class="theme-toggle-label">Dark mode</span>
+          </button>
+        </div>
+        <nav id="menu" aria-label="Site navigation">
           <header class="major"><h2>Menu</h2></header>
           <ul>
             <li><a href="index.html">Home</a></li>

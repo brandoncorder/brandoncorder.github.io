@@ -5,11 +5,15 @@ on:
     paths:
       - '*.html'
       - 'scripts/check_navigation.py'
+      - 'assets/css/site-overrides.css'
+      - 'assets/js/theme.js'
       - '.github/workflows/check-navigation.yml'
   pull_request:
     paths:
       - '*.html'
       - 'scripts/check_navigation.py'
+      - 'assets/css/site-overrides.css'
+      - 'assets/js/theme.js'
       - '.github/workflows/check-navigation.yml'
   workflow_dispatch:
 
@@ -24,3 +28,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Verify sidebar consistency and links
         run: python3 scripts/check_navigation.py
+      - name: Check theme JavaScript syntax
+        run: node --check assets/js/theme.js

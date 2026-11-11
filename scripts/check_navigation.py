@@ -180,6 +180,38 @@ def audit() -> list[str]:
         failures.append("Dissertation advisor not visible in static and dynamic lists")
     if '"advisor": "Kenneth M. Cameron"' not in dataset.read_text(encoding="utf-8"):
         failures.append("Dissertation advisor missing from publication data")
+    # Ensure the homepage photo cannot overlap its call-to-action buttons,
+    # and every page offers the same accessible, persistent theme switch.
+    theme_css = stylesheet.read_text(encoding="utf-8")
+    theme_js_path = ROOT / "assets/js/theme.js"
+    if not theme_js_path.is_file():
+        failures.append("Theme script assets/js/theme.js missing")
+    else:
+        theme_js = theme_js_path.read_text(encoding="utf-8")
+        for required in ["localStorage", "data-theme", "aria-pressed", "DOMContentLoaded"]:
+            if required not in theme_js:
+                failures.append(f"Theme script missing {required}")
+    for required in [
+        'body.home-page #banner',
+        'grid-template-columns: repeat(auto-fit',
+        'body.home-page #banner .content .actions',
+        'flex-wrap: wrap',
+        'html[data-theme="dark"]',
+        '.theme-toggle:focus-visible',
+    ]:
+        if required not in theme_css:
+            failures.append(f"Theme stylesheet missing {required}")
+    for page_name in PAGES:
+        page = (ROOT / page_name).read_text(encoding="utf-8")
+        if '<script src="assets/js/theme.js"></script>' not in page:
+            failures.append(f"{page_name}: theme script not loaded in the head")
+        if 'class="theme-switcher"' not in page:
+            failures.append(f"{page_name}: missing sidebar theme switcher")
+        if page.count('data-theme-toggle') != (2 if page_name == "index.html" else 1):
+            failures.append(f"{page_name}: unexpected count of theme switches")
+    if 'theme-toggle-compact' not in homepage:
+        failures.append("Homepage missing compact header theme switch")
+
     return failures
 
 
