@@ -6,6 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <style>
+    /* Lightweight research-page enhancements, designed to work with the existing HTML5 UP theme. */
+    .research-topic { display: flow-root; }
+    .research-topic-nav { display: flex; flex-wrap: wrap; gap: 0.45em 0.9em; margin: 0 0 1em; }
+    .research-topic-nav a { font-size: 0.9em; }
+    .research-photo { float: right; width: 34%; max-width: 370px; margin: 0.2em 0 1.2em 2em; }
+    .research-photo img { display: block; width: 100%; height: auto; border-radius: 0.35em; }
+    @media screen and (max-width: 736px) {
+      .research-photo { float: none; width: 100%; max-width: 520px; margin: 0 0 1.5em; }
+    }
+  </style>
 </head>
 <body class="is-preload">
   <div id="wrapper">
@@ -14,46 +25,82 @@
     <div id="main">
       <div class="inner">
 
+        <!-- Research overview and topic sections. Existing anchor IDs retained to protect homepage links. -->
         <section id="research-overview">
           <header class="major"><h1>Research</h1></header>
-          <p>My research interests span plant diversity and evolution, including orchid–fungal associations, heterotrophic nutrition, plastid genome evolution, and the ecology and biogeography of bryophytes. I combine field observations, natural history collections, ecological approaches, and molecular methods to explore these questions.</p>
+          <p>My research spans the diversity, evolution, and ecology of plants, especially orchids and bryophytes. Much of my work has centered on how plants interact with other organisms and their environments, from the evolutionary consequences of fungal nutrition in orchids to the diversity and distribution of plants across North American landscapes. I approach these questions using field collections, natural history specimens, molecular and phylogenetic methods, stable isotope analysis, and ecological and biodiversity data.</p>
           <ul class="actions">
             <li><a href="publications.html" class="button primary">Publications</a></li>
             <li><a href="https://orcid.org/0000-0002-6442-2355" class="button" target="_blank" rel="noopener noreferrer">ORCID</a></li>
             <li><a href="https://scholar.google.com/citations?user=X1Wl7MUAAAAJ&amp;hl=en" class="button" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
             <li><a href="https://www.researchgate.net/profile/Brandon-Corder-2?ev=hdr_xprf" class="button" target="_blank" rel="noopener noreferrer">ResearchGate</a></li>
           </ul>
+          <h2>Research Areas</h2>
+          <nav aria-label="Research topic links" class="research-topic-nav">
+            <a href="#trophic-mode">Orchid nutrition</a>
+            <a href="#fungal-metabarcoding">Orchid–fungal relationships</a>
+            <a href="#plastome-evolution">Plastome evolution</a>
+            <a href="#bryophytes">Bryophytes</a>
+            <a href="#alpine-ecology">Alpine ecology</a>
+            <a href="#floristics-collections">Floristics and collections</a>
+            <a href="#paleobotany">Paleobotany</a>
+            <a href="#presentations">Presentations</a>
+          </nav>
         </section>
 
-        <section id="trophic-mode">
-          <header class="major">
-            <h2>Trophic Mode Evolution in Orchids</h2>
-          </header>
-          <p>I study the evolution of secondary heterotrophy in photosynthetic organisms, with a particular focus on mycoheterotrophy in orchids (Orchidaceae). Orchids are unique among flowering plants for their lifelong reliance on fungal symbionts, especially during seedling establishment. More than 250 orchid species have entirely lost chlorophyll and depend exclusively on their fungal partners for carbon and nutrients. Many other green orchids display partial mycoheterotrophy, a mixed trophic strategy that combines photosynthesis with fungal-derived carbon acquisition.</p>
-          <p>To investigate these nutritional pathways, I use stable isotope analysis (δ13C, δ15N, and others) alongside ecological and phylogenetic tools. This work helps clarify the spectrum between autotrophy and full mycoheterotrophy, offering insights into the evolution of plant-fungal mutualisms and the ecological conditions that drive dependency.</p>
+        <section id="trophic-mode" class="research-topic">
+          <header class="major"><h2>Trophic Mode Evolution in Orchids</h2></header>
+          <figure class="research-photo">
+            <img src="images/triphora1.JPEG" alt="Three birds orchid (Triphora) photographed in the field" loading="lazy" />
+          </figure>
+          <p>Orchids are particularly interesting for their relationships with fungi. They rely on fungal partners during germination and early development, and some species continue to obtain part or all of their carbon from fungi as adults. My doctoral research at the University of Wisconsin–Madison investigated the evolution and ecology of these nutritional strategies, with an emphasis on partial mycoheterotrophy in North American orchids.</p>
+          <p>Using stable carbon and nitrogen isotopes alongside ecological and phylogenetic information, I investigated variation in orchid trophic modes across the flora of Wisconsin and the broader Great Lakes region. This work explores the continuum between photosynthetic carbon acquisition and fungal-derived nutrition, and what it can tell us about the evolution of plant–fungal relationships.</p>
         </section>
 
-        <section id="fungal-metabarcoding">
-          <header class="major">
-            <h2>Fungal Metabarcoding of Orchid Symbionts</h2>
-          </header>
-          <p>Using fungal metabarcoding and environmental sequencing, I investigate the identity and geographic variation of fungal symbionts in temperate North American orchids, particularly the rare three birds orchid, <i>Triphora trianthophoros</i>. This work aims to understand how specificity and flexibility in orchid-fungal partnerships shape species distributions, conservation outcomes, and the potential for symbiotic resilience in changing environments.</p>
+        <section id="fungal-metabarcoding" class="research-topic">
+          <header class="major"><h2>Fungal Associations of North American Orchids</h2></header>
+          <p>Which fungi associate with orchids, and how flexible are these relationships across species and localities? I have used fungal DNA metabarcoding and molecular identification to study orchid-associated fungal communities, with particular emphasis on the three birds orchid, <i>Triphora trianthophoros</i>.</p>
+          <p>This work examines variation in fungal associations and the potential importance of saprotrophic fungi in orchid nutrition. It complements my stable isotope research by connecting patterns of carbon acquisition with the identities and ecological roles of fungal partners.</p>
         </section>
 
-        <section id="plastome-evolution">
-          <header class="major">
-            <h2>Plastome Evolution in Mycoheterotrophs</h2>
-          </header>
-          <p>As part of broader efforts to study genome degradation in heterotrophic plants, I use molecular phylogenetic approaches to track patterns of gene loss across autotrophic, mixotrophic, and fully mycoheterotrophic lineages. My work focuses on clades such as Vanilloideae (Orchidaceae), where repeated transitions in trophic strategy have left distinctive signatures in the plastid genome. These data help illuminate how shifts in nutritional mode influence plastome evolution and structural decay.</p>
+        <section id="plastome-evolution" class="research-topic">
+          <header class="major"><h2>Plastome Evolution in Mycoheterotrophic Plants</h2></header>
+          <figure class="research-photo">
+            <img src="images/Vanilla1.JPEG" alt="Vanilla orchid, representing the orchid subfamily Vanilloideae" loading="lazy" />
+          </figure>
+          <p>The evolution of heterotrophic nutrition can have far-reaching consequences for the plastid genome. My research has examined patterns of plastome evolution and gene loss among orchids with different trophic strategies, especially within Vanilloideae, a lineage that includes both photosynthetic and mycoheterotrophic species.</p>
+          <p>Using organellar genome assembly, sequence analysis, and phylogenetic approaches, I am interested in how reductions in photosynthetic dependence relate to changes in plastid gene content and genome structure.</p>
         </section>
 
-        <section id="bryophytes">
-          <header class="major">
-            <h2>Bryophyte Diversity, Ecology, and Biogeography</h2>
-          </header>
-          <p>I am also passionate about the diversity and ecology of bryophytes (mosses, liverworts, and hornworts) in North American ecosystems. My research emphasizes documenting hidden diversity through field inventories, specimen vouchering, and public engagement. An ongoing project involves study of the patterns of biogeography in the Coastal Plains bryoflora.</p>
+        <section id="bryophytes" class="research-topic">
+          <header class="major"><h2>Bryophyte Diversity, Floristics, and Biogeography</h2></header>
+          <figure class="research-photo">
+            <img src="images/liverworts.JPEG" alt="Liverworts photographed during botanical fieldwork" loading="lazy" />
+          </figure>
+          <p>Mosses, liverworts, and hornworts make up an extraordinarily diverse but often overlooked component of North American floras. My bryological interests include floristic inventories, specimen-based taxonomy, patterns of geographic distribution, and the documentation of uncommon or poorly known species.</p>
+          <p>I have worked with bryophyte collections and field records in the Great Lakes region and the Southeastern United States. In particular, I am interested in the diversity and endemism of bryophytes in the North American Coastal Plain. My floristic work has also included a record of the liverwort <i>Plagiochasma crenulatum</i> in Florida, presented at the 2026 Hugo L. Blomquist Bryological and Lichenological Foray.</p>
         </section>
 
+        <section id="alpine-ecology" class="research-topic">
+          <header class="major"><h2>Alpine Plant Ecology and Elevational Gradients</h2></header>
+          <figure class="research-photo">
+            <img src="images/mountwash1.JPEG" alt="Mountain landscape from Mount Washington fieldwork" loading="lazy" />
+          </figure>
+          <p>My collaborative research has also explored how plant communities and functional traits change across elevational gradients. On Mount Washington, New Hampshire, I have contributed to studies of woody plant diversity, leaf habit, functional and phylogenetic community structure, and foliar chemistry. These projects examine how vegetation changes from lower-elevation forests toward alpine environments.</p>
+          <p>Related field experience includes population and demographic surveys of rare Arctic- and alpine-disjunct plants on Isle Royale, Michigan. This work brought together field identification, quantitative measurements, and long-term botanical records.</p>
+        </section>
+
+        <section id="floristics-collections" class="research-topic">
+          <header class="major"><h2>Floristics, Herbarium Collections, and Biodiversity Data</h2></header>
+          <p>Natural history collections and field observations are fundamental to much of my work. At the Wisconsin State Herbarium, I contributed to vascular plant and bryophyte collections, floristic surveys, and treatments for the <i>Wisconsin Flora</i>. I have also worked with colleagues on peatland plant community surveys and educational research through the <i>Students and Water in Wisconsin’s Peatland Plant Communities</i> project.</p>
+          <p>I'm particularly interested in combining physical specimens with digitized herbarium records and community-contributed biodiversity observations, including iNaturalist and other public data resources. These sources can help document plant distributions, revisit historical records, identify gaps in botanical collecting, and make floristic information more useful for research and education.</p>
+        </section>
+
+        <section id="paleobotany" class="research-topic">
+          <header class="major"><h2>Paleobotany and Early Flowering Plants</h2></header>
+          <p>My undergraduate research at the Florida Museum of Natural History introduced me to fossil plants and the early evolution of flowering plants. Working with paleobotanical collections, I used specimen imaging and microscopy, including X-ray microtomography, to investigate fossil plant morphology.</p>
+          <p>This work contributed to the description of <i>Dakotanthus</i>, an early eudicot flower and fruit from the Cretaceous Dakota Formation of Kansas and Nebraska, published with collaborators in <i>Acta Palaeobotanica</i> (2018).</p>
+        </section>
 
         <!-- Conference presentations and sessions: verified against 2026 CV. -->
         <section id="presentations">
