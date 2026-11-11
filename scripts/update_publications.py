@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "assets" / "data" / "publications.json"
 ORCID = "0000-0002-6442-2355"
 ALLOWED_ORCID_TYPES = {
-    "journal-article", "conference-paper", "book-chapter", "book", "dissertation",
+    "journal-article", "conference-paper", "book-chapter", "book", "dissertation", "dissertation-thesis",
 }
 ALLOWED_CROSSREF_TYPES = {
     "journal-article", "proceedings-article", "book-chapter", "book",
@@ -106,13 +106,14 @@ def read_orcid_works() -> list[dict]:
             if not link.startswith("https://"):
                 continue
             journal_info = work.get("journal-title") or {}
+            print(f"ORCID matched: {title}")
             result.append({
                 "title": title,
                 "year": year_of(work.get("publication-date")),
                 "venue": journal_info.get("value") or "",
                 "doi": doi,
                 "url": link,
-                "type": "journal-article" if work_type == "journal-article" else ("dissertation" if work_type == "dissertation" else "other"),
+                "type": "journal-article" if work_type == "journal-article" else ("dissertation" if work_type in {"dissertation", "dissertation-thesis"} else "other"),
                 "source": "ORCID",
             })
             break  # One preferred summary per ORCID work group
@@ -184,12 +185,37 @@ def main() -> int:
 
     # Preserve curated entries and prior auto results. The APIs may omit works
     # temporarily; absence from one response must not silently delete a paper.
-    all_records: dict[str, dict] = {}
+    # Match by either DOI or normalized title so a newly added DOI does not
+    # create a second entry for a previously DOI-less, manually curated work.
+    records: list[dict] = []
     for record in prior_auto + discovered + curated:
-        k = key(record)
-        if k != "title:":
-            all_records[k] = record  # curated takes precedence
-    updated = sorted(all_records.values(),
+        title_key = re.sub(r"[^a-z0-9]", "", record.get("title", "").casefold())
+        doi = doi_value(record.get("doi"))
+        match = next((
+            i for i, old in enumerate(records)
+            if (doi and doi == doi_value(old.get("doi"))) or
+               (title_key and title_key ==
+                re.sub(r"[^a-z0-9]", "", old.get("title", "").casefold()))
+        ), None)
+        if match is None:
+            if title_key:
+                records.append(record)
+            continue
+        previous = records[match]
+        if previous.get("manual"):
+            winner = {**record, **previous}
+        elif record.get("manual"):
+            winner = {**previous, **record}
+        else:
+            winner = {**previous, **record}
+        if not doi_value(winner.get("doi")):
+            supplement = doi_value(previous.get("doi")) or doi
+            if supplement:
+                winner["doi"] = supplement
+                if not winner.get("url"):
+                    winner["url"] = "https://doi.org/" + supplement
+        records[match] = winner
+    updated = sorted(records,
                      key=lambda item: (-(item.get("year") or 0),
                                        item.get("title", "").casefold()))
     data.update({
