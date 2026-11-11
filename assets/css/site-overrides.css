@@ -476,3 +476,248 @@ html[data-theme="dark"] .theme-system-button[aria-pressed="true"] {
   }
 }
 
+
+
+/* =============================================================
+   Mobile width and appearance refinements (November 2026)
+   ============================================================= */
+
+/* All button rows (including the ResearchGate link) may wrap when they
+   exceed the page width. Avoid the HTML5 UP nowrap button overflow. */
+#main .inner ul.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  min-width: 0;
+  max-width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+}
+#main .inner ul.actions > li {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+#main .inner ul.actions > li > .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 3.2em;
+  height: auto;
+  padding: 0.7em 1.25em;
+  line-height: 1.4;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+/* Long article titles and DOI links should not widen the viewport. */
+#publication-list a,
+#publication-list .publication-detail {
+  overflow-wrap: anywhere;
+}
+
+/* Higher-contrast location captions in dark mode on the homepage. */
+html[data-theme="dark"] body.home-page #fieldwork .fieldwork-title {
+  color: #edf3f6;
+  font-weight: 600;
+}
+
+/* Keep mobile appearance controls in normal document flow (rather than
+   floating over the homepage's social links or buttons). */
+#main > .inner > .mobile-theme-controls {
+  display: none;
+}
+
+@media screen and (max-width: 736px) {
+  #main > .inner > .mobile-theme-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 6;
+    max-width: 100%;
+    padding: 0.75rem 0 0;
+  }
+
+  /* The sidebar theme controls remain in place on desktop, but aren't
+     duplicated in the mobile slide-out navigation. */
+  #sidebar > .inner > .theme-switcher {
+    display: none;
+  }
+
+  #main > .inner > .mobile-theme-controls .mobile-theme-toggle {
+    width: 2.65rem;
+    min-width: 2.65rem;
+    min-height: 2.5rem;
+    padding: 0.4rem;
+  }
+
+  #main > .inner > .mobile-theme-controls .mobile-theme-toggle .theme-toggle-label {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+
+/* =============================================================
+   Awards: compact, chronological groups with a clear hierarchy.
+   ============================================================= */
+#awards.awards-organized .awards-intro {
+  color: #65747a;
+  max-width: 52rem;
+  margin-bottom: 1.6em;
+}
+
+#awards .awards-group {
+  margin: 2em 0 0;
+}
+
+#awards .awards-group > h3 {
+  font-size: 1.35rem;
+  line-height: 1.35;
+  margin: 0 0 0.8em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #dce2e5;
+}
+
+#awards .award-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+#awards .award-row {
+  display: grid;
+  grid-template-columns: minmax(5.25rem, 7rem) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  min-width: 0;
+  padding: 0.95rem 1.15rem;
+  border-radius: 0.35rem;
+  border: 1px solid #e1e6e9;
+  background: #f8fafb;
+}
+
+#awards .award-year {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: #5b6a70;
+}
+
+#awards .award-description {
+  min-width: 0;
+}
+
+#awards .award-description h4 {
+  font-size: 1.06rem;
+  line-height: 1.4;
+  margin: 0 0 0.3em;
+}
+
+#awards .award-description p {
+  color: #65747a;
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+#awards .award-description a {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+}
+
+/* Service copy remains readable without dense nested card styling. */
+.service-group {
+  margin-top: 2em;
+}
+
+.service-group h2 {
+  font-size: 1.4rem;
+  margin: 0 0 0.65em;
+}
+
+/* The Gallery displays real photographs already kept in /images/. */
+.botanical-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.botanical-gallery .gallery-item {
+  margin: 0;
+  min-width: 0;
+}
+
+.botanical-gallery .gallery-item a {
+  display: block;
+  border: 0;
+  overflow: hidden;
+  border-radius: 0.4rem;
+}
+
+.botanical-gallery .gallery-item a:focus-visible {
+  outline: 3px solid #f56a6a;
+  outline-offset: 3px;
+}
+
+.botanical-gallery .gallery-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: cover;
+}
+
+.botanical-gallery .gallery-item figcaption {
+  color: #4d5e65;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.55rem 0 0;
+}
+
+/* Dark-mode contrast matches the rest of the website. */
+html[data-theme="dark"] #awards .awards-intro,
+html[data-theme="dark"] #awards .award-description p,
+html[data-theme="dark"] #awards .award-year,
+html[data-theme="dark"] .botanical-gallery .gallery-item figcaption {
+  color: #c7d5dc;
+}
+
+html[data-theme="dark"] #awards .award-row {
+  background: #1d292e;
+  border-color: #3d4d55;
+}
+
+html[data-theme="dark"] #awards .awards-group > h3 {
+  border-bottom-color: #42545e;
+}
+
+@media screen and (max-width: 480px) {
+  #awards .award-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.2rem;
+    padding: 0.85rem 0.95rem;
+  }
+  .botanical-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 1rem;
+  }
+}

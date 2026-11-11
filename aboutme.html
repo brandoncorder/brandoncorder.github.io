@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-  <link rel="stylesheet" href="assets/css/site-overrides.css?v=20261111b" />
+  <link rel="stylesheet" href="assets/css/site-overrides.css?v=20261111d" />
   <script src="assets/js/theme.js?v=20261111b"></script>
 </head>
 <body class="is-preload">
@@ -15,6 +15,11 @@
     <!-- Main -->
     <div id="main">
       <div class="inner">
+      <!-- Mobile-only appearance controls. Sidebar controls stay on desktop. -->
+      <div class="mobile-theme-controls" role="group" aria-label="Appearance controls">
+        <button type="button" class="theme-toggle mobile-theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode"><span class="theme-toggle-symbol" aria-hidden="true">☾</span><span class="theme-toggle-label">Dark mode</span></button>
+        <button type="button" class="theme-toggle theme-system-button" data-theme-system aria-pressed="true" aria-label="Use system appearance" title="Follow your device appearance">System</button>
+      </div>
         <section id="about">
           <header class="major">
             <h1 class="page-title">About Me</h1>
@@ -22,62 +27,62 @@
           <p>[Content coming soon]</p>
         </section>
 
-        <section id="awards">
+        <section id="awards" class="awards-organized">
           <header class="major"><h2>Awards and Fellowships</h2></header>
-        <!-- Awards transferred from the former Awards page, grouped by category. -->
-        <section id="teaching-awards" class="awards-subsection">
-          <header class="major"><h3>Teaching Awards</h3></header>
-          <div class="posts">
-            <article class="award-item">
-              <h4>Dorothy Powelson Capstone Teaching Award</h4>
-              <p>2024 · University of Wisconsin–Madison</p>
-              <p><a href="https://grad.wisc.edu/2024/03/04/graduate-student-teachers-recognized-for-excellence-with-2023-24-teaching-assistant-awards/" target="_blank" rel="noopener noreferrer">UW–Madison teaching awards announcement</a></p>
-            </article>
-            <article class="award-item">
-              <h4>Department of Botany Newcomb Senior Teaching Award</h4>
-              <p>2024 · University of Wisconsin–Madison</p>
-            </article>
-          </div>
-        </section>
+          <p class="awards-intro">Selected recognition for teaching and botanical research, alongside research fellowships and grants.</p>
 
-        <section id="research-awards" class="awards-subsection">
-          <header class="major"><h3>Research Awards and Recognition</h3></header>
-          <div class="posts">
-            <article class="award-item">
-              <h4>Graduate Student Research Award — Mid-American Orchid Congress</h4>
-              <p>2022</p>
-            </article>
-            <article class="award-item">
-              <h4>Graduate Student Research Award — American Society of Plant Taxonomists</h4>
-              <p>2021 · <a href="https://static1.squarespace.com/static/585186b615d5db7c9d79d99a/t/6361347315659e65d2a38bf4/1667314808261/2021+GSRG+Reports.pdf" target="_blank" rel="noopener noreferrer">Award report (PDF)</a></p>
-            </article>
-            <article class="award-item">
-              <h4>Graduate Student Research Award — Botanical Society of America</h4>
-              <p>2021 · <a href="https://botany.org/home/awards/annual-award-recipients/2021-award-recipients.html" target="_blank" rel="noopener noreferrer">Award recipients</a></p>
-            </article>
-            <article class="award-item">
-              <h4>Fred Case Award — Native Orchid Conference</h4>
-              <p>2020</p>
-            </article>
-            <article class="award-item">
-              <h4>Young Botanist Award — Botanical Society of America</h4>
-              <p>2017 · Certificate of Special Achievement (advisors: Pamela and Douglas Soltis)</p>
-              <p><a href="https://botany.org/home/awards/annual-award-recipients/2017-award-recipients.html" target="_blank" rel="noopener noreferrer">Award recipient listing</a></p>
-            </article>
-          </div>
-        </section>
+          <section id="teaching-awards" class="awards-group">
+            <h3>Teaching Awards</h3>
+            <ul class="award-rows">
+              <li class="award-row">
+                <span class="award-year">2024</span>
+                <div class="award-description"><h4>Dorothy Powelson Capstone Teaching Award</h4>
+                  <p>University of Wisconsin–Madison · College of Letters &amp; Science</p>
+                  <a href="https://grad.wisc.edu/2024/03/04/graduate-student-teachers-recognized-for-excellence-with-2023-24-teaching-assistant-awards/" target="_blank" rel="noopener noreferrer">University announcement</a>
+                </div>
+              </li>
+              <li class="award-row">
+                <span class="award-year">2024</span>
+                <div class="award-description"><h4>Newcomb Senior Teaching Award</h4>
+                  <p>Department of Botany · University of Wisconsin–Madison</p>
+                </div>
+              </li>
+            </ul>
+          </section>
 
-        <section id="fellowships-grants" class="awards-subsection">
-          <header class="major"><h3>Fellowships and Selected Research Grants</h3></header>
-          <ul>
-            <li><strong>Demeter Award</strong> — University of Wisconsin–Madison Botany (2024, 2023)</li>
-            <li><strong>Flora Aeterna Fellowship</strong> — University of Wisconsin–Madison Botany (2023, 2021)</li>
-            <li><strong>Davis Award</strong> — University of Wisconsin–Madison Botany (2021)</li>
-            <li><strong>Tulipa et Paeonia Research Assistantship</strong> — University of Wisconsin–Madison Botany (2020)</li>
-            <li><strong>Natural Area Teaching Laboratory Mini-Grant</strong> — University of Florida (2016), supporting an inventory of the laboratory's resident mosses. <a href="https://natl.ifas.ufl.edu/data-archive/moss/" target="_blank" rel="noopener noreferrer">Project information</a></li>
-            <li><strong>Iltis Award</strong> — University of Wisconsin–Madison Botany (multiple awards)</li>
-          </ul>
-        </section>
+          <section id="research-awards" class="awards-group">
+            <h3>Research Awards and Recognition</h3>
+            <ul class="award-rows">
+              <li class="award-row"><span class="award-year">2022</span>
+                <div class="award-description"><h4>Graduate Student Research Award</h4><p>Mid-American Orchid Congress</p></div></li>
+              <li class="award-row"><span class="award-year">2021</span>
+                <div class="award-description"><h4>Graduate Student Research Award</h4><p>American Society of Plant Taxonomists</p><a href="https://static1.squarespace.com/static/585186b615d5db7c9d79d99a/t/6361347315659e65d2a38bf4/1667314808261/2021+GSRG+Reports.pdf" target="_blank" rel="noopener noreferrer">Award report (PDF)</a></div></li>
+              <li class="award-row"><span class="award-year">2021</span>
+                <div class="award-description"><h4>Graduate Student Research Award</h4><p>Botanical Society of America</p><a href="https://botany.org/home/awards/annual-award-recipients/2021-award-recipients.html" target="_blank" rel="noopener noreferrer">Award recipients</a></div></li>
+              <li class="award-row"><span class="award-year">2020</span>
+                <div class="award-description"><h4>Fred Case Award</h4><p>Native Orchid Conference</p></div></li>
+              <li class="award-row"><span class="award-year">2017</span>
+                <div class="award-description"><h4>Young Botanist Award</h4><p>Botanical Society of America · Certificate of Special Achievement (advisors: Pamela and Douglas Soltis)</p><a href="https://botany.org/home/awards/annual-award-recipients/2017-award-recipients.html" target="_blank" rel="noopener noreferrer">Award recipient listing</a></div></li>
+            </ul>
+          </section>
+
+          <section id="fellowships-grants" class="awards-group">
+            <h3>Fellowships and Selected Grants</h3>
+            <ul class="award-rows">
+              <li class="award-row"><span class="award-year">2024, 2023</span>
+                <div class="award-description"><h4>Demeter Award</h4><p>University of Wisconsin–Madison · Botany</p></div></li>
+              <li class="award-row"><span class="award-year">2023, 2021</span>
+                <div class="award-description"><h4>Flora Aeterna Fellowship</h4><p>University of Wisconsin–Madison · Botany</p></div></li>
+              <li class="award-row"><span class="award-year">2021</span>
+                <div class="award-description"><h4>Davis Award</h4><p>University of Wisconsin–Madison · Botany</p></div></li>
+              <li class="award-row"><span class="award-year">2020</span>
+                <div class="award-description"><h4>Tulipa et Paeonia Research Assistantship</h4><p>University of Wisconsin–Madison · Botany</p></div></li>
+              <li class="award-row"><span class="award-year">2016</span>
+                <div class="award-description"><h4>Natural Area Teaching Laboratory Mini-Grant</h4><p>University of Florida · Inventory of resident mosses</p><a href="https://natl.ifas.ufl.edu/data-archive/moss/" target="_blank" rel="noopener noreferrer">Project information</a></div></li>
+              <li class="award-row"><span class="award-year">Multiple</span>
+                <div class="award-description"><h4>Iltis Award</h4><p>University of Wisconsin–Madison · Botany</p></div></li>
+            </ul>
+          </section>
         </section>
       </div>
     </div>
@@ -104,6 +109,7 @@
             <li><a href="science-communication.html">Science Communication</a></li>
             <li><a href="service.html">Service and Outreach</a></li>
             <li><a href="fieldwork.html">Fieldwork</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
             <li><a href="collections.html">Collections</a></li>
           </ul>
         </nav>
