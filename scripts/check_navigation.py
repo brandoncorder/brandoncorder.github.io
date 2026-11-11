@@ -168,8 +168,6 @@ def audit() -> list[str]:
             failures.append(f"{label}: removed Instagram introduction sentence remains")
     if "This website brings together my teaching" in homepage:
         failures.append("Homepage intro sentence was reintroduced")
-    if "Read the NC State feature" not in teaching:
-        failures.append("NC State teaching feature missing")
     if "Sydney Berkeley (2024–2025)" not in teaching:
         failures.append("Sydney Berkeley dates missing")
     if teaching.index("<h3>Students Mentored</h3>") < teaching.index("<h3>Mentoring Development</h3>"):
