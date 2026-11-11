@@ -10,6 +10,7 @@ on:
   push:
     branches:
       - research-refresh-nov-2026
+      - site-structure-presentations-authors-2026
     paths:
       - '.github/workflows/sync-publications.yml'
       - 'scripts/update_publications.py'
