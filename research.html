@@ -1,20 +1,37 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <title>Research | Brandon Corder</title>
+  <title>Research | Brandon D. Corder</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
   <style>
-    /* Lightweight research-page enhancements, designed to work with the existing HTML5 UP theme. */
+    /* Keep site-wide HTML5 UP styles; these additions are scoped to Research. */
     .research-topic { display: flow-root; }
-    .research-topic-nav { display: flex; flex-wrap: wrap; gap: 0.45em 0.9em; margin: 0 0 1em; }
-    .research-topic-nav a { font-size: 0.9em; }
-    .research-photo { float: right; width: 34%; max-width: 370px; margin: 0.2em 0 1.2em 2em; }
-    .research-photo img { display: block; width: 100%; height: auto; border-radius: 0.35em; }
-    @media screen and (max-width: 736px) {
-      .research-photo { float: none; width: 100%; max-width: 520px; margin: 0 0 1.5em; }
+    .research-topic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8em;
+      margin: 1.1em 0 1.5em;
+    }
+    .research-topic-grid .button {
+      display: flex; justify-content: center; align-items: center;
+      text-align: center; white-space: normal; height: auto;
+      min-height: 4em; line-height: 1.4; padding: 0.8em 1em;
+    }
+    .research-anchor { display: block; position: relative; top: -0.4em; }
+    .collaboration-actions { align-items: center; }
+    .collaboration-actions .collaboration-email { display: inline-block; padding: 0.3em 0; }
+    #publication-list .publication-authors { margin: 0.3em 0 0.15em; line-height: 1.6; }
+    #publication-list .publication-authors strong { color: #343a40; }
+    #publication-list .publication-detail { margin: 0.25em 0 1em; color: #7f888f; font-size: 0.93em; }
+    #publication-list ul.alt li { padding: 1em 0; }
+    @media screen and (max-width: 900px) {
+      .research-topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media screen and (max-width: 480px) {
+      .research-topic-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -27,86 +44,118 @@
 
         <!-- Research overview and topic sections. Existing anchor IDs retained to protect homepage links. -->
         <section id="research-overview">
-          <header class="major"><h1>Research</h1></header>
+          <header class="major"><h1>Research and Publications</h1></header>
           <p>My research spans the diversity, evolution, and ecology of plants, especially orchids and bryophytes. Much of my work has centered on how plants interact with other organisms and their environments, from the evolutionary consequences of fungal nutrition in orchids to the diversity and distribution of plants across North American landscapes. I approach these questions using field collections, natural history specimens, molecular and phylogenetic methods, stable isotope analysis, and ecological and biodiversity data.</p>
-          <p>I'm always open to collaborations. If you have an idea or project you'd like to discuss, please <a href="mailto:bdcorder@ncsu.edu">send me an email</a>.</p>
-          <ul class="actions">
-            <li><a href="publications.html" class="button primary">Publications</a></li>
-            <li><a href="https://orcid.org/0000-0002-6442-2355" class="button" target="_blank" rel="noopener noreferrer">ORCID</a></li>
-            <li><a href="https://scholar.google.com/citations?user=X1Wl7MUAAAAJ&amp;hl=en" class="button" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-            <li><a href="https://www.researchgate.net/profile/Brandon-Corder-2?ev=hdr_xprf" class="button" target="_blank" rel="noopener noreferrer">ResearchGate</a></li>
+          <p>I'm always open to collaborations. If you have an idea or project you'd like to discuss, please get in touch.</p>
+          <ul class="actions collaboration-actions">
+            <li><a href="mailto:bdcorder@ncsu.edu" class="button primary">Email me</a></li>
+            <li><a href="mailto:bdcorder@ncsu.edu" class="collaboration-email">bdcorder@ncsu.edu</a></li>
           </ul>
+
           <h2>Research Areas</h2>
-          <nav aria-label="Research topic links" class="research-topic-nav">
-            <a href="#trophic-mode">Orchid nutrition</a>
-            <a href="#fungal-metabarcoding">Orchid–fungal relationships</a>
-            <a href="#plastome-evolution">Plastome evolution</a>
-            <a href="#bryophytes">Bryophytes</a>
-            <a href="#alpine-ecology">Alpine ecology</a>
-            <a href="#floristics-collections">Floristics and collections</a>
-            <a href="#paleobotany">Paleobotany</a>
-            <a href="#presentations">Presentations</a>
+          <!-- Six topics, arranged in two rows of three buttons at desktop widths. -->
+          <nav class="research-topic-grid" aria-label="Research areas">
+            <a href="#orchid-fungal-relationships" class="button">Orchid–fungal relationships</a>
+            <a href="#plastome-evolution" class="button">Plastome evolution</a>
+            <a href="#bryophytes" class="button">Bryophyte diversity</a>
+            <a href="#alpine-ecology" class="button">Alpine ecology</a>
+            <a href="#floristics-collections" class="button">Floristics and collections</a>
+            <a href="#paleobotany" class="button">Paleobotany</a>
           </nav>
         </section>
 
-        <section id="trophic-mode" class="research-topic">
-          <header class="major"><h2>Trophic Mode Evolution in Orchids</h2></header>
-          <figure class="research-photo">
-            <img src="images/triphora1.JPEG" alt="Three birds orchid (Triphora) photographed in the field" loading="lazy" />
-          </figure>
-          <p>Orchids are particularly interesting for their relationships with fungi. They rely on fungal partners during germination and early development, and some species continue to obtain part or all of their carbon from fungi as adults. My doctoral research at the University of Wisconsin–Madison investigated the evolution and ecology of these nutritional strategies, with an emphasis on partial mycoheterotrophy in North American orchids.</p>
-          <p>Using stable carbon and nitrogen isotopes alongside ecological and phylogenetic information, I investigated variation in orchid trophic modes across the flora of Wisconsin and the broader Great Lakes region. This work explores the continuum between photosynthetic carbon acquisition and fungal-derived nutrition, and what it can tell us about the evolution of plant–fungal relationships.</p>
-        </section>
-
-        <section id="fungal-metabarcoding" class="research-topic">
-          <header class="major"><h2>Fungal Associations of North American Orchids</h2></header>
-          <p>Which fungi associate with orchids, and how flexible are these relationships across species and localities? I have used fungal DNA metabarcoding and molecular identification to study orchid-associated fungal communities, with particular emphasis on the three birds orchid, <i>Triphora trianthophoros</i>.</p>
-          <p>This work examines variation in fungal associations and the potential importance of saprotrophic fungi in orchid nutrition. It complements my stable isotope research by connecting patterns of carbon acquisition with the identities and ecological roles of fungal partners.</p>
+        <section id="orchid-fungal-relationships" class="research-topic">
+          <span id="trophic-mode" class="research-anchor" aria-hidden="true"></span>
+          <header class="major"><h2>Orchid–Fungal Relationships and Nutrition</h2></header>
+          <p>Orchids are particularly interesting for their relationships with fungi. They depend on fungal partners during germination and early development, while some species continue to obtain part or all of their carbon from fungi as adults. My doctoral research at the University of Wisconsin–Madison investigated the evolution and ecology of these nutritional strategies, with an emphasis on partial mycoheterotrophy in North American orchids.</p>
+          <p>Using stable carbon and nitrogen isotopes alongside ecological and phylogenetic information, I examined nutritional variation among orchids of Wisconsin and the broader Great Lakes region. These approaches help distinguish photosynthetic carbon acquisition from fungal-derived nutrition and reveal variation in trophic strategies among green orchids.</p>
+          <span id="fungal-metabarcoding" class="research-anchor" aria-hidden="true"></span>
+          <p>I have also used fungal DNA metabarcoding and molecular identification to investigate which fungi associate with orchids, particularly the three birds orchid, <i>Triphora trianthophoros</i>. By considering fungal identities alongside stable isotope evidence, I explore how variation in fungal partnerships, including associations with saprotrophic fungi, relates to orchid nutrition, ecology, and distribution.</p>
         </section>
 
         <section id="plastome-evolution" class="research-topic">
           <header class="major"><h2>Plastome Evolution in Mycoheterotrophic Plants</h2></header>
-          <figure class="research-photo">
-            <img src="images/Vanilla1.JPEG" alt="Vanilla orchid, representing the orchid subfamily Vanilloideae" loading="lazy" />
-          </figure>
           <p>The evolution of heterotrophic nutrition can have far-reaching consequences for the plastid genome. My research has examined patterns of plastome evolution and gene loss among orchids with different trophic strategies, especially within Vanilloideae, a lineage that includes both photosynthetic and mycoheterotrophic species.</p>
           <p>Using organellar genome assembly, sequence analysis, and phylogenetic approaches, I am interested in how reductions in photosynthetic dependence relate to changes in plastid gene content and genome structure.</p>
         </section>
 
         <section id="bryophytes" class="research-topic">
           <header class="major"><h2>Bryophyte Diversity, Floristics, and Biogeography</h2></header>
-          <figure class="research-photo">
-            <img src="images/liverworts.JPEG" alt="Liverworts photographed during botanical fieldwork" loading="lazy" />
-          </figure>
-          <p>Mosses, liverworts, and hornworts make up an extraordinarily diverse but often overlooked component of North American floras. My bryological interests include floristic inventories, specimen-based taxonomy, patterns of geographic distribution, and the documentation of uncommon or poorly known species.</p>
-          <p>I have worked with bryophyte collections and field records in the Great Lakes region and the Southeastern United States. In particular, I am interested in the diversity and endemism of bryophytes in the North American Coastal Plain. My floristic work has also included a record of the liverwort <i>Plagiochasma crenulatum</i> in Florida, presented at the 2026 Hugo L. Blomquist Bryological and Lichenological Foray.</p>
+          <p>My interests in bryophytes center on their diversity and distribution, particularly in eastern North America. I enjoy the process of working out a regional flora: collecting in the field, examining herbarium specimens, identifying difficult material, and piecing together historical and contemporary records to understand where species occur.</p>
+          <p>I've worked with mosses and liverworts in the Great Lakes region and the southeastern United States, with a particular interest in floristic patterns and endemism in the North American Coastal Plain. Much of this work draws on natural history collections, both to document species that have received relatively little attention and to improve our understanding of their distributions. It has also included documenting the liverwort <i>Plagiochasma crenulatum</i> in Florida.</p>
         </section>
 
         <section id="alpine-ecology" class="research-topic">
           <header class="major"><h2>Alpine Plant Ecology and Elevational Gradients</h2></header>
-          <figure class="research-photo">
-            <img src="images/mountwash1.JPEG" alt="Mountain landscape from Mount Washington fieldwork" loading="lazy" />
-          </figure>
           <p>On Mount Washington, New Hampshire, I provided phylogenetics support for a collaborative project investigating how woody plant communities and functional traits change along an elevational gradient. The broader research team examined plant diversity, leaf habit, functional and phylogenetic community structure, and foliar chemistry, from lower-elevation forests toward alpine environments.</p>
           <p>Related field experience includes population and demographic surveys of rare Arctic- and alpine-disjunct plants on Isle Royale, Michigan. This work brought together field identification, quantitative measurements, and long-term botanical records.</p>
         </section>
 
         <section id="floristics-collections" class="research-topic">
           <header class="major"><h2>Floristics, Herbarium Collections, and Biodiversity Data</h2></header>
-          <p>Natural history collections and field observations are fundamental to much of my work. At the Wisconsin State Herbarium, I contributed to vascular plant and bryophyte collections, floristic surveys, and treatments for the <i>Wisconsin Flora</i>. I have also worked with colleagues on peatland plant community surveys and educational research through the <i>Students and Water in Wisconsin’s Peatland Plant Communities</i> project.</p>
+          <p>Natural history collections and field observations are fundamental to much of my work. At the Wisconsin State Herbarium, I contributed to vascular plant and bryophyte collections, floristic surveys, and treatments for the <i>Wisconsin Flora</i>.</p>
           <p>I'm particularly interested in combining physical specimens with digitized herbarium records and community-contributed biodiversity observations, including iNaturalist and other public data resources. These sources can help document plant distributions, revisit historical records, identify gaps in botanical collecting, and make floristic information more useful for research and education.</p>
         </section>
 
         <section id="paleobotany" class="research-topic">
           <header class="major"><h2>Paleobotany and Early Flowering Plants</h2></header>
           <p>My undergraduate research at the Florida Museum of Natural History introduced me to fossil plants and the early evolution of flowering plants. Working with paleobotanical collections, I used specimen imaging and microscopy, including X-ray microtomography, to investigate fossil plant morphology.</p>
-          <p>This work contributed to the description of <i>Dakotanthus</i>, an early eudicot flower and fruit from the Cretaceous Dakota Formation of Kansas and Nebraska, published with collaborators in <i>Acta Palaeobotanica</i> (2018).</p>
+          <p>This work contributed to the description of <a href="https://en.wikipedia.org/wiki/Dakotanthus" target="_blank" rel="noopener noreferrer"><i>Dakotanthus</i></a>, an early eudicot flower and fruit from the Cretaceous Dakota Formation of Kansas and Nebraska. The findings were published with collaborators in <a href="https://doi.org/10.2478/acpa-2018-0006" target="_blank" rel="noopener noreferrer"><i>Acta Palaeobotanica</i> (2018)</a>.</p>
+        </section>
+
+        <section id="publications">
+          <header class="major"><h1>Publications</h1></header>
+          <ul class="actions">
+            <li><a href="https://orcid.org/0000-0002-6442-2355" class="button" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+            <li><a href="https://scholar.google.com/citations?user=X1Wl7MUAAAAJ&amp;hl=en" class="button" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+            <li><a href="https://www.researchgate.net/profile/Brandon-Corder-2?ev=hdr_xprf" class="button" target="_blank" rel="noopener noreferrer">ResearchGate</a></li>
+          </ul>
+          <!-- Static fallback is replaced from the periodically updated publications.json. -->
+          <div id="publication-list">
+            <h3>Journal Articles and Other Papers</h3>
+            <ul class="alt">
+      <li><a href="https://doi.org/10.1093/aob/mcag324" target="_blank" rel="noopener noreferrer">Taxonomic, functional, and phylogenetic structure of Mt. Washington’s woody plant communities (New Hampshire, USA)</a>
+        <p class="publication-authors">Nathan G Kiel, Michael S Peyton, Sam W Anderson, Katherine T Charton, <strong>Brandon D Corder</strong>, Patricia W Chan, Jordon C Tourville, Lena N Berry, Linden A Taylor, Tyler H Wintermute, Thomas J Givnish</p>
+        <p class="publication-detail"><em>Annals of Botany</em> · 2026 · DOI: 10.1093/aob/mcag324</p>
+      </li>
+      <li><a href="https://doi.org/10.1093/aob/mcag307" target="_blank" rel="noopener noreferrer">Foliar metabolomes of woody plant communities across an elevational gradient on Mount Washington (New Hampshire, USA)</a>
+        <p class="publication-authors">Tyler H Wintermute, Linden A Taylor, Michael S Peyton, Nathan G Kiel, Lena N Berry, Katherine T Charton, Sam W Anderson, Patricia W Chan, <strong>Brandon D Corder</strong>, Jordon Tourville, Thomas J Givnish</p>
+        <p class="publication-detail"><em>Annals of Botany</em> · 2026 · DOI: 10.1093/aob/mcag307</p>
+      </li>
+      <li><a href="https://doi.org/10.1093/aob/mcag179" target="_blank" rel="noopener noreferrer">Deciduous and evergreen leaf habit structures intraspecific trait expression along an elevational gradient</a>
+        <p class="publication-authors">Michael S Peyton, Katherine T Charton, Nathan G Kiel, Tyler H Wintermute, Jordon C Tourville, Sam W Anderson, Lena N Berry, <strong>Brandon D Corder</strong>, Patricia W Chan, Linden A Taylor, Thomas J Givnish</p>
+        <p class="publication-detail"><em>Annals of Botany</em> · 2026 · DOI: 10.1093/aob/mcag179</p>
+      </li>
+      <li><a href="https://ci.lib.ncsu.edu/citation/1469896" target="_blank" rel="noopener noreferrer">A checklist and distributional record for the wild orchids of Wisconsin, USA</a>
+        <p class="publication-authors"><strong>Brandon D Corder</strong></p>
+        <p class="publication-detail"><em>The Native Orchid Conference Journal</em> · 2026</p>
+      </li>
+      <li><a href="https://doi.org/10.2478/acpa-2018-0006" target="_blank" rel="noopener noreferrer">Early eudicot flower and fruit: Dakotanthus gen. nov. from the Cretaceous Dakota Formation of Kansas and Nebraska, USA</a>
+        <p class="publication-authors">Steven R. Manchester, David L. Dilcher, Walter S. Judd, <strong>Brandon D. Corder</strong>, James F. Basinger</p>
+        <p class="publication-detail"><em>Acta Palaeobotanica</em> · 2018 · DOI: 10.2478/acpa-2018-0006</p>
+      </li>
+            </ul>
+            <h3>Dissertations and Other Scholarly Work</h3>
+            <ul class="alt">
+      <li><a href="https://ci.lib.ncsu.edu/citation/1469897" target="_blank" rel="noopener noreferrer">Trophic Mode Evolution in Orchids: Integrating Regional Isotope, Fungal, and Genomic Approaches</a>
+        <p class="publication-authors"><strong>Brandon D Corder</strong></p>
+        <p class="publication-detail"><em>Ph.D. dissertation, University of Wisconsin–Madison</em> · 2025</p>
+      </li>
+            </ul>
+          </div>
         </section>
 
         <!-- Conference presentations and sessions: verified against 2026 CV. -->
         <section id="presentations">
-          <header class="major"><h2>Conference Presentations and Sessions</h2></header>
-          <p>Selected contributed presentations, posters, and conference sessions. An asterisk indicates the presenter, following my CV.</p>
+          <header class="major"><h2>Posters and Presentations</h2></header>
+          <p>Selected contributed presentations, posters, and conference sessions. An asterisk indicates the presenter.</p>
+
+          <h3>Posters</h3>
+          <ul>
+            <li><strong>2026</strong> — Corder, B.*, Johnson, H., Niemuth, S., Klingert, A., Feist, M. A. “Bridging the Gap: Historical insights from 185 years of <i>Sphagnum</i> moss collections in Wisconsin peatlands.” Wisconsin Wetlands Conference, Baraboo, Wisconsin.</li>
+            <li><strong>2026</strong> — Baughman, S.*, Kligert, T., Powell, A., Corder, B., Feist, M. A., Wefferling, K. “Place-based peatland community trailside guide development.” Wisconsin Wetlands Conference, Baraboo, Wisconsin.</li>
+            <li><strong>2016</strong> — Corder, B.*, Lahav, S., Scola, D., Orr, J., Burtscher, W., Holiman, E., Payton, A., McDaniel, S. “Building a toolbox for authentic undergraduate research experiences in evolutionary genetics using the sexually dimorphic moss <i>Ceratodon purpureus</i>.” Evolution 2016, Austin, Texas.</li>
+          </ul>
 
           <h3>Contributed Presentations</h3>
           <ul>
@@ -116,13 +165,6 @@
             <li><strong>2024</strong> — Corder, B.*, Cameron, K. “Uncovering hidden mycoheterotrophs in the orchid flora of Wisconsin.” Botanical Society of America Conference (Botany 2024), Grand Rapids, Michigan.</li>
             <li><strong>2023</strong> — Corder, B.*, Cameron, K. “Partial mycoheterotrophy and fungal associations of <i>Triphora trianthophoros</i>, a rare North American orchid.” Botanical Society of America Conference (Botany 2023), Boise, Idaho.</li>
             <li><strong>2022</strong> — Corder, B.* “Partial mycoheterotrophy in orchids: Its evolution, ecology, and biogeography.” Native Orchid Conference, Port Angeles, Washington.</li>
-          </ul>
-
-          <h3>Posters</h3>
-          <ul>
-            <li><strong>2026</strong> — Corder, B.*, Johnson, H., Niemuth, S., Klingert, A., Feist, M. A. “Bridging the Gap: Historical insights from 185 years of <i>Sphagnum</i> moss collections in Wisconsin peatlands.” Wisconsin Wetlands Conference, Baraboo, Wisconsin.</li>
-            <li><strong>2026</strong> — Baughman, S.*, Kligert, T., Powell, A., Corder, B., Feist, M. A., Wefferling, K. “Place-based peatland community trailside guide development.” Wisconsin Wetlands Conference, Baraboo, Wisconsin.</li>
-            <li><strong>2016</strong> — Corder, B.*, Lahav, S., Scola, D., Orr, J., Burtscher, W., Holiman, E., Payton, A., McDaniel, S. “Building a toolbox for authentic undergraduate research experiences in evolutionary genetics using the sexually dimorphic moss <i>Ceratodon purpureus</i>.” Evolution 2016, Austin, Texas.</li>
           </ul>
 
           <h3>Organized and Co-organized Sessions</h3>
@@ -143,11 +185,9 @@
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="aboutme.html">About Me</a></li>
-            <li><a href="research.html">Research</a></li>
+            <li><a href="research.html">Research and Publications</a></li>
             <li><a href="teaching.html">Teaching and Mentoring</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="index.html#science-communication">Science Communication</a></li>
-            <li><a href="awards.html">Awards</a></li>
+            <li><a href="science-communication.html">Science Communication</a></li>
             <li><a href="service.html">Service</a></li>
             <li><a href="fieldwork.html">Fieldwork</a></li>
             <li><a href="index.html#collections">Collections</a></li>
@@ -163,7 +203,7 @@
         </section>
 
         <footer id="footer">
-          <p class="copyright">&copy; Brandon Corder. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+          <p class="copyright">&copy; Brandon D. Corder. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
         </footer>
 
       </div>
@@ -177,5 +217,6 @@
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/publications.js"></script>
 </body>
 </html>
