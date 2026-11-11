@@ -1,0 +1,26 @@
+name: Validate website sidebar navigation
+
+on:
+  push:
+    paths:
+      - '*.html'
+      - 'scripts/check_navigation.py'
+      - '.github/workflows/check-navigation.yml'
+  pull_request:
+    paths:
+      - '*.html'
+      - 'scripts/check_navigation.py'
+      - '.github/workflows/check-navigation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sidebar-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+      - name: Verify sidebar consistency and links
+        run: python3 scripts/check_navigation.py
