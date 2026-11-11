@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -27,7 +30,32 @@
         <section id="gallery">
           <header class="major"><h1 class="page-title">Gallery</h1></header>
           <p>Selected photographs from botanical fieldwork and studies of plant diversity. Select an image to view it at full size.</p>
+          <!-- GitHub Pages/Jekyll automatically includes any image added to
+               images/gallery/ on the next site build. No API requests or
+               manually maintained image manifest are required. -->
+          <h2>Gallery Photographs</h2>
           <div class="botanical-gallery">
+            {% assign gallery_photos = site.static_files | where_exp: "photo", "photo.path contains '/images/gallery/'" | sort: "name" %}
+            {% assign gallery_photo_count = 0 %}
+            {% for photo in gallery_photos %}
+              {% assign photo_extension = photo.extname | downcase %}
+              {% if photo_extension == '.jpg' or photo_extension == '.jpeg' or photo_extension == '.png' or photo_extension == '.webp' or photo_extension == '.gif' or photo_extension == '.avif' %}
+                {% assign gallery_photo_count = gallery_photo_count | plus: 1 %}
+            <figure class="gallery-item">
+              <a href="{{ photo.path | relative_url | escape }}" target="_blank" rel="noopener noreferrer" aria-label="Open full image: {{ photo.basename | escape }}">
+                <img src="{{ photo.path | relative_url | escape }}" alt="{{ photo.basename | escape }}" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>{{ photo.basename | escape }}</figcaption>
+            </figure>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% if gallery_photo_count == 0 %}
+          <p class="gallery-empty">More botanical photographs coming soon.</p>
+          {% endif %}
+
+          <h2>Selected Fieldwork Photographs</h2>
+                    <div class="botanical-gallery">
             <figure class="gallery-item">
               <a href="images/alaska1.JPEG" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Alaska">
                 <img src="images/alaska1.JPEG" alt="Botanical fieldwork photograph from Alaska" loading="lazy" decoding="async" />
