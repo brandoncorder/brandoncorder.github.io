@@ -12,7 +12,14 @@
       "url": "https://ci.lib.ncsu.edu/citation/1469896",
       "type": "journal-article",
       "source": "ORCID",
-      "manual": true
+      "manual": true,
+      "authors": [
+        {
+          "given": "Brandon D",
+          "family": "Corder",
+          "orcid": "0000-0002-6442-2355"
+        }
+      ]
     },
     {
       "title": "Deciduous and evergreen leaf habit structures intraspecific trait expression along an elevational gradient",
@@ -207,7 +214,14 @@
       "url": "https://ci.lib.ncsu.edu/citation/1469897",
       "type": "dissertation",
       "source": "ORCID",
-      "manual": true
+      "manual": true,
+      "authors": [
+        {
+          "given": "Brandon D",
+          "family": "Corder",
+          "orcid": "0000-0002-6442-2355"
+        }
+      ]
     },
     {
       "title": "Early eudicot flower and fruit: Dakotanthus gen. nov. from the Cretaceous Dakota Formation of Kansas and Nebraska, USA",
