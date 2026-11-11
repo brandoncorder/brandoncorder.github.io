@@ -1,0 +1,44 @@
+# Public bibliography refresh for GitHub Pages.
+# On main: refresh every Monday and on manual invocation.
+# During drafting: a push to the review branch tests the integration.
+name: Synchronize academic publications
+
+on:
+  schedule:
+    - cron: '23 11 * * 1'
+  workflow_dispatch:
+  push:
+    branches:
+      - research-refresh-nov-2026
+    paths:
+      - '.github/workflows/sync-publications.yml'
+      - 'scripts/update_publications.py'
+      - 'assets/data/publications.json'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out current branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch public ORCID and Crossref records
+        run: python scripts/update_publications.py
+      - name: Commit updated data when it changes
+        run: |
+          if git diff --quiet -- assets/data/publications.json; then
+            echo "No bibliography changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/publications.json
+          git commit -m "Refresh publications from ORCID and Crossref"
+          git push
