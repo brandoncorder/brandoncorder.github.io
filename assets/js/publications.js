@@ -92,6 +92,14 @@
         detail.appendChild(document.createTextNode(" · DOI: " + record.doi));
       }
       li.appendChild(detail);
+      // Optional dissertation supervisor metadata is part of the curated
+      // version-controlled dataset, so it survives automated ORCID refreshes.
+      if (record.type === "dissertation" && typeof record.advisor === "string" && record.advisor.trim()) {
+        var advisorLine = document.createElement("p");
+        advisorLine.className = "publication-advisor";
+        advisorLine.textContent = "Advisor: " + record.advisor.trim();
+        li.appendChild(advisorLine);
+      }
       list.appendChild(li);
     });
     fragment.appendChild(list);

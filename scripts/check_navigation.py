@@ -23,6 +23,7 @@ PAGES = [
     "awards.html",
     "service.html",
     "fieldwork.html",
+    "collections.html",
 ]
 EXPECTED = [
     ("index.html", "Home"),
@@ -30,9 +31,9 @@ EXPECTED = [
     ("research.html", "Research and Publications"),
     ("teaching.html", "Teaching and Mentoring"),
     ("science-communication.html", "Science Communication"),
-    ("service.html", "Service"),
+    ("service.html", "Service and Outreach"),
     ("fieldwork.html", "Fieldwork"),
-    ("index.html#collections", "Collections"),
+    ("collections.html", "Collections"),
 ]
 CONTACTS = ("mailto:bdcorder@ncsu.edu", "mailto:brandoncorder95@gmail.com")
 
@@ -141,6 +142,44 @@ def audit() -> list[str]:
         if "<title>" not in page or "Brandon D. Corder</title>" not in page:
             failures.append(f"{file} missing updated Brandon D. Corder title")
 
+    # The November 2026 refinements must survive future page edits.
+    collections = (ROOT / "collections.html").read_text(encoding="utf-8")
+    stylesheet = ROOT / "assets/css/site-overrides.css"
+    dataset = ROOT / "assets/data/publications.json"
+    publications_js = ROOT / "assets/js/publications.js"
+    if not stylesheet.is_file():
+        failures.append("Shared site-overrides.css stylesheet missing")
+    for page_name in PAGES:
+        page = (ROOT / page_name).read_text(encoding="utf-8")
+        if 'assets/css/site-overrides.css' not in page:
+            failures.append(f"{page_name}: missing shared heading and spacing styles")
+    if 'href="collections.html" class="button"' not in homepage:
+        failures.append("Homepage missing standalone Collections button")
+    if 'id="collections"' not in collections or '[Content coming soon]' not in collections:
+        failures.append("Collections page incomplete")
+    if '<h1 class="page-title">Service and Outreach</h1>' not in service:
+        failures.append("Service and Outreach page title not updated")
+    if '<h1 class="page-title">About Me</h1>' not in about:
+        failures.append("About Me must use consistent page-title styling")
+    for label, content in [("homepage", homepage), ("science page", science)]:
+        if "friendslakeshorepreserve.com/people--events/an-introduction" in content:
+            failures.append(f"{label}: retired moss-walk hyperlink remains")
+        if "I also share botanical photography, field observations" in content:
+            failures.append(f"{label}: removed Instagram introduction sentence remains")
+    if "This website brings together my teaching" in homepage:
+        failures.append("Homepage intro sentence was reintroduced")
+    if "Read the NC State feature" not in teaching:
+        failures.append("NC State teaching feature missing")
+    if "Sydney Berkeley (2024–2025)" not in teaching:
+        failures.append("Sydney Berkeley dates missing")
+    if teaching.index("<h3>Students Mentored</h3>") < teaching.index("<h3>Mentoring Development</h3>"):
+        failures.append("Students Mentored must appear after Mentoring Development")
+    if "Read more about Wisconsin’s peatlands project" not in teaching:
+        failures.append("Peatland read-more link missing")
+    if "Advisor: Kenneth M. Cameron" not in research or "publication-advisor" not in publications_js.read_text(encoding="utf-8"):
+        failures.append("Dissertation advisor not visible in static and dynamic lists")
+    if '"advisor": "Kenneth M. Cameron"' not in dataset.read_text(encoding="utf-8"):
+        failures.append("Dissertation advisor missing from publication data")
     return failures
 
 

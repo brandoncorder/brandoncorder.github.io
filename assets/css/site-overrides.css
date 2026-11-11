@@ -1,0 +1,116 @@
+/*
+ * Site-wide presentation refinements (November 2026).
+ * Loaded after HTML5 UP's main.css and page-specific inline styles so
+ * typography and vertical spacing remain consistent on every page.
+ * Keep these adjustments small and scoped; do not modify the vendor theme.
+ */
+
+/* Standardized, modestly reduced main page titles. */
+.page-title {
+  font-size: clamp(2.15rem, 3.15vw, 3rem) !important;
+  line-height: 1.23;
+  letter-spacing: -0.015em;
+  margin-top: 0;
+}
+
+/* Tighten the oversized gap below pink-underlined section headings. */
+#main .inner header.major > :last-child {
+  margin-bottom: 0.85em;
+  padding-bottom: 0.35em;
+}
+#main .inner section > header.major {
+  margin-bottom: 0.4em;
+}
+
+/* Override very generous theme section padding while retaining separation. */
+#main > .inner > section {
+  padding-top: 3.2em;
+  padding-bottom: 2.1em;
+}
+#main > .inner > section:first-of-type {
+  padding-top: 2.5em;
+}
+#main .inner > section > :last-child {
+  margin-bottom: 0;
+}
+
+/* Larger site identity on the HOME header without reintroducing About Me h1. */
+body.home-page #header .logo strong {
+  font-size: 1.5em;
+  line-height: 1.4;
+}
+
+/* Differentiate the section hierarchy on About Me. */
+#awards > header.major h2 {
+  font-size: 1.8rem;
+}
+#awards > .awards-subsection > header.major h3 {
+  font-size: 1.35rem;
+}
+#awards .award-item > h4 {
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+#awards .awards-subsection {
+  margin-top: 1.5em;
+}
+#awards .posts {
+  margin-bottom: 1.3em;
+}
+
+/* Make the Year column align between both UW–Madison teaching tables. */
+#previous-teaching table {
+  table-layout: fixed;
+  width: 100%;
+}
+#previous-teaching th:first-child,
+#previous-teaching td:first-child {
+  width: 142px;
+}
+
+/* Teaching feature article sits directly below the NC State role. */
+.teaching-feature {
+  border-left: 3px solid #f56a6a;
+  padding: 0.2em 0 0.3em 1.15em;
+  margin: 0.7em 0 1.4em;
+}
+.teaching-feature h3 {
+  margin-bottom: 0.45em;
+}
+.teaching-feature p {
+  margin-bottom: 0.7em;
+}
+
+/* Research: bibliographic source and date should read larger than authors. */
+body.research-page #publication-list .publication-authors {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0.25em 0 0.1em;
+}
+body.research-page #publication-list .publication-detail {
+  font-size: 1.04rem;
+  line-height: 1.55;
+  color: #5b676d;
+  margin: 0.2em 0 0.4em;
+}
+body.research-page #publication-list .publication-advisor {
+  font-size: 0.95rem;
+  margin: 0.3em 0 0.7em;
+}
+
+@media screen and (max-width: 736px) {
+  #main > .inner > section {
+    padding-top: 2.4em;
+    padding-bottom: 1.5em;
+  }
+  #main > .inner > section:first-of-type {
+    padding-top: 1.9em;
+  }
+  #previous-teaching th:first-child,
+  #previous-teaching td:first-child {
+    width: 95px;
+  }
+  body.home-page #header .logo strong {
+    font-size: 1.25em;
+  }
+}
