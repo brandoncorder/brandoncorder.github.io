@@ -17,6 +17,45 @@
     }
   }
 
+  // Show author names in publication order; safely build text nodes rather
+  // than injecting metadata into HTML. Bold Brandon's name only.
+  function authorName(author) {
+    if (typeof author === "string") return author.trim();
+    if (!author || typeof author !== "object") return "";
+    return String(author.name || [author.given, author.family].filter(Boolean).join(" ")).trim();
+  }
+
+  function isBrandon(author) {
+    if (!author) return false;
+    if (typeof author === "object") {
+      if (String(author.orcid || "").endsWith("0000-0002-6442-2355")) return true;
+      var family = String(author.family || "").trim().toLowerCase();
+      var given = String(author.given || "").trim();
+      if (family === "corder" && /^(brandon|b)\\b/i.test(given)) return true;
+    }
+    var name = authorName(author);
+    return /\\b(brandon(?:\\s+d(?:ev)?\\.?|\\s+dev)?\\s+corder|b\\.?\\s*(?:d\\.?\\s*)?corder|corder,?\\s*(?:brandon|b\\.?))/i.test(name);
+  }
+
+  function appendAuthors(li, authors) {
+    if (!Array.isArray(authors) || !authors.length) return;
+    var line = document.createElement("p");
+    line.className = "publication-authors";
+    authors.forEach(function (author, i) {
+      var name = authorName(author);
+      if (!name) return;
+      if (line.childNodes.length) line.appendChild(document.createTextNode(", "));
+      if (isBrandon(author)) {
+        var strong = document.createElement("strong");
+        strong.textContent = name;
+        line.appendChild(strong);
+      } else {
+        line.appendChild(document.createTextNode(name));
+      }
+    });
+    if (line.childNodes.length) li.appendChild(line);
+  }
+
   function renderGroup(fragment, heading, records) {
     if (!records.length) return;
     var h3 = document.createElement("h3");
@@ -40,6 +79,7 @@
         strong.textContent = record.title;
         li.appendChild(strong);
       }
+      appendAuthors(li, record.authors);
       var detail = document.createElement("p");
       detail.className = "publication-detail";
       var venue = document.createElement("em");
