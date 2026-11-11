@@ -1,24 +1,15 @@
 {
   "orcid": "0000-0002-6442-2355",
   "description": "A curated seed collection, periodically supplemented using ORCID and Crossref metadata. Manual entries are retained when APIs are unavailable.",
-  "last_checked": null,
-  "source_status": "curated seed; automatic refresh not yet run",
+  "last_checked": "2026-11-11",
+  "source_status": "ORCID: 0 qualifying records; Crossref: 3 qualifying records",
   "publications": [
     {
-      "title": "Taxonomic, functional, and phylogenetic structure of Mt. Washington’s woody plant communities (New Hampshire, USA)",
+      "title": "A checklist and distributional record for the wild orchids of Wisconsin, USA",
       "year": 2026,
-      "venue": "Annals of Botany",
-      "doi": "10.1093/aob/mcag324",
-      "url": "https://doi.org/10.1093/aob/mcag324",
-      "type": "journal-article",
-      "manual": true
-    },
-    {
-      "title": "Foliar metabolomes of woody plant communities across an elevational gradient on Mount Washington (New Hampshire, USA)",
-      "year": 2026,
-      "venue": "Annals of Botany",
-      "doi": "10.1093/aob/mcag307",
-      "url": "https://doi.org/10.1093/aob/mcag307",
+      "venue": "The Native Orchid Conference Journal",
+      "doi": "",
+      "url": "https://ci.lib.ncsu.edu/citation/1469896",
       "type": "journal-article",
       "manual": true
     },
@@ -32,11 +23,20 @@
       "manual": true
     },
     {
-      "title": "A checklist and distributional record for the wild orchids of Wisconsin, USA",
+      "title": "Foliar metabolomes of woody plant communities across an elevational gradient on Mount Washington (New Hampshire, USA)",
       "year": 2026,
-      "venue": "The Native Orchid Conference Journal",
-      "doi": "",
-      "url": "https://ci.lib.ncsu.edu/citation/1469896",
+      "venue": "Annals of Botany",
+      "doi": "10.1093/aob/mcag307",
+      "url": "https://doi.org/10.1093/aob/mcag307",
+      "type": "journal-article",
+      "manual": true
+    },
+    {
+      "title": "Taxonomic, functional, and phylogenetic structure of Mt. Washington’s woody plant communities (New Hampshire, USA)",
+      "year": 2026,
+      "venue": "Annals of Botany",
+      "doi": "10.1093/aob/mcag324",
+      "url": "https://doi.org/10.1093/aob/mcag324",
       "type": "journal-article",
       "manual": true
     },
