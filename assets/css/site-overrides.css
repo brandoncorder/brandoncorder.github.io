@@ -117,71 +117,105 @@ body.research-page #publication-list .publication-advisor {
 
 
 /* =============================================================
-   Homepage portrait + button layout
-   The original 50% + 50% columns ALSO added a 4em image margin,
-   exceeding the available width and covering the last button.
-   CSS Grid gives both areas real, non-overlapping columns and
-   automatically stacks them when the content region is narrow.
+   Desktop banner: fixed two-column grid, never width(50%) + margin.
+   Old Editorial theme percentages and portrait media rules otherwise
+   let images or buttons extend into the adjacent column.
    ============================================================= */
 body.home-page #banner {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
-  gap: clamp(1.5rem, 3.5vw, 3.25rem);
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) !important;
+  grid-template-areas: "intro portrait";
   align-items: start;
-}
-
-body.home-page #banner .content,
-body.home-page #banner .image {
+  column-gap: clamp(1.25rem, 2.6vw, 3rem);
+  row-gap: 1.5rem;
   width: 100%;
   min-width: 0;
-  max-width: 100%;
-  margin: 0;
-  flex: none;
 }
 
-body.home-page #banner .image {
-  height: auto;
+body.home-page #banner > .content {
+  grid-area: intro;
+  width: 100% !important;
+  max-width: 100%;
+  min-width: 0;
+  flex: none;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+body.home-page #banner > .image {
+  grid-area: portrait;
+  display: block;
+  position: relative;
+  width: 100% !important;
+  max-width: 100%;
+  min-width: 0;
   min-height: 0;
-  max-height: none;
-  overflow: hidden;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  flex: none;
   align-self: start;
+  overflow: hidden;
   border-radius: 0.375rem;
 }
 
-body.home-page #banner .image img {
+body.home-page #banner > .image img {
+  position: static;
   display: block;
-  width: 100%;
-  height: auto;
+  width: 100% !important;
   max-width: 100%;
+  height: auto !important;
   max-height: none;
-  object-fit: cover;
+  object-fit: contain;
 }
 
-body.home-page #banner .content .actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-left: 0;
-  padding-left: 0;
-  max-width: 100%;
-}
-
-body.home-page #banner .content .actions li {
-  padding: 0;
+/* The three wide links must wrap *within the text column*. */
+body.home-page #banner .content > ul.actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start;
+  gap: 0.7rem;
   margin: 0;
+  padding: 0;
+  width: 100%;
   max-width: 100%;
+  min-width: 0;
 }
 
-body.home-page #banner .content .actions .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 3.4em;
-  height: auto;
-  line-height: 1.35;
+body.home-page #banner .content > ul.actions > li {
+  flex: 0 1 auto;
+  min-width: 0;
   max-width: 100%;
-  padding: 0.85em 1.3em;
-  white-space: normal;
+  margin: 0;
+  padding: 0;
+}
+
+body.home-page #banner .content > ul.actions > li > a.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  min-height: 3.4em;
+  max-width: 100%;
+  line-height: 1.35;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  padding: 0.8em 1.25em;
+}
+
+/* Stack when the viewport or content area is too narrow for two columns.
+   This overrides the original theme's orientation-based image sizing. */
+@media screen and (max-width: 1100px) {
+  body.home-page #banner {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas: "intro" "portrait";
+  }
+
+  body.home-page #banner > .image {
+    width: 100% !important;
+    max-width: 34rem;
+    justify-self: start;
+  }
 }
 
 /* =============================================================
@@ -396,3 +430,49 @@ html[data-theme="dark"] textarea {
     transition: none;
   }
 }
+
+/* Keep the homepage theme button reliably clickable alongside social icons. */
+body.home-page #header .icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  position: relative;
+  z-index: 5;
+}
+
+body.home-page #header .icons li {
+  padding: 0;
+  flex: 0 0 auto;
+}
+
+body.home-page #header .theme-toggle-compact {
+  position: relative;
+  z-index: 6;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.theme-switcher {
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.theme-system-button[aria-pressed="true"] {
+  border-color: #556b2f;
+  box-shadow: inset 0 0 0 1px #556b2f !important;
+}
+
+html[data-theme="dark"] .theme-system-button[aria-pressed="true"] {
+  border-color: #99b97a;
+  box-shadow: inset 0 0 0 1px #99b97a !important;
+}
+
+@media screen and (max-width: 736px) {
+  /* HTML5 UP pins the icon list above the header on narrow displays. */
+  body.home-page #header .icons {
+    position: absolute;
+  }
+}
+
