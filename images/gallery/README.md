@@ -1,22 +1,23 @@
 # Gallery photo uploads
 
-Upload photographs **directly into this folder** (`images/gallery/`) on GitHub.
+Upload photographs **directly into this folder** (`images/gallery/`) on GitHub's **main** branch.
 
-When the upload is committed to `main`, GitHub Pages rebuilds the site and the [Gallery](https://brandoncorder.github.io/gallery.html) automatically includes the image. **You do not need to edit `gallery.html` or add an entry manually.**
+The live Gallery reads the public file list from GitHub when a visitor opens the page. **After the Gallery's updated JavaScript has published once**, future uploads appear automatically, without editing `gallery.html` or waiting for GitHub Pages to rebuild. If the GitHub API is temporarily unavailable, the page displays its last saved photo selection.
 
-## File names become captions
+## Caption from filename
 
-The Gallery uses the filename *without its extension* as the caption, preserving spelling, spaces, punctuation, and capitalization.
+The caption is precisely the filename without the extension. For example:
 
-Examples:
 - `Triphora trianthophoros.jpg` → **Triphora trianthophoros**
 - `Mount Washington 2023.webp` → **Mount Washington 2023**
 - `My Orchid Photo.JPG` → **My Orchid Photo**
 
-Supported extensions: `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`, `.avif` (case-insensitive). Prefer JPG or WebP for photos, and keep files reasonably small for mobile visitors.
+Image files are sorted alphabetically, and visitors can open each original at full size.
 
-Avoid filenames containing `#`, `?`, `%`, or `/`, as those can interfere with URLs. Avoid uploading images with sensitive GPS/location metadata.
+Supported extensions (case-insensitive): JPG, JPEG, PNG, WebP, GIF, and AVIF. Other files, including README.md, are ignored.
 
-Images are displayed alphabetically by filename. Removing a file from this folder also removes it from the Gallery on the next site build.
+Please remove sensitive EXIF metadata (including GPS coordinates) before upload. GitHub stores earlier commits in its history even if you delete and replace a file. Consider keeping photographs web-sized to improve mobile loading.
 
-The original photographs elsewhere under `images/` remain in the separate *Selected Fieldwork Photographs* section.
+## Upload steps
+
+Open this folder on GitHub, select **Add file → Upload files**, select your photographs, and commit to `main`. Refresh the Gallery to see the current list.
