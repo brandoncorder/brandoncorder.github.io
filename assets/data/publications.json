@@ -22,6 +22,57 @@
       "url": "https://doi.org/10.1093/aob/mcag179",
       "type": "journal-article",
       "source": "Crossref",
+      "authors": [
+        {
+          "given": "Michael S",
+          "family": "Peyton",
+          "orcid": "0009-0002-4170-9633"
+        },
+        {
+          "given": "Katherine T",
+          "family": "Charton",
+          "orcid": "0000-0002-0869-7899"
+        },
+        {
+          "given": "Nathan G",
+          "family": "Kiel",
+          "orcid": "0000-0001-9623-9785"
+        },
+        {
+          "given": "Tyler H",
+          "family": "Wintermute"
+        },
+        {
+          "given": "Jordon C",
+          "family": "Tourville"
+        },
+        {
+          "given": "Sam W",
+          "family": "Anderson",
+          "orcid": "0009-0005-6016-9873"
+        },
+        {
+          "given": "Lena N",
+          "family": "Berry"
+        },
+        {
+          "given": "Brandon D",
+          "family": "Corder",
+          "orcid": "0000-0002-6442-2355"
+        },
+        {
+          "given": "Patricia W",
+          "family": "Chan"
+        },
+        {
+          "given": "Linden A",
+          "family": "Taylor"
+        },
+        {
+          "given": "Thomas J",
+          "family": "Givnish"
+        }
+      ],
       "manual": true
     },
     {
@@ -32,6 +83,59 @@
       "url": "https://doi.org/10.1093/aob/mcag307",
       "type": "journal-article",
       "source": "Crossref",
+      "authors": [
+        {
+          "given": "Tyler H",
+          "family": "Wintermute",
+          "orcid": "0009-0002-6857-5970"
+        },
+        {
+          "given": "Linden A",
+          "family": "Taylor"
+        },
+        {
+          "given": "Michael S",
+          "family": "Peyton",
+          "orcid": "0009-0002-4170-9633"
+        },
+        {
+          "given": "Nathan G",
+          "family": "Kiel",
+          "orcid": "0000-0001-9623-9785"
+        },
+        {
+          "given": "Lena N",
+          "family": "Berry",
+          "orcid": "0009-0000-3749-1059"
+        },
+        {
+          "given": "Katherine T",
+          "family": "Charton",
+          "orcid": "0000-0002-0869-7899"
+        },
+        {
+          "given": "Sam W",
+          "family": "Anderson",
+          "orcid": "0009-0005-6016-9873"
+        },
+        {
+          "given": "Patricia W",
+          "family": "Chan"
+        },
+        {
+          "given": "Brandon D",
+          "family": "Corder",
+          "orcid": "0000-0002-6442-2355"
+        },
+        {
+          "given": "Jordon",
+          "family": "Tourville"
+        },
+        {
+          "given": "Thomas J",
+          "family": "Givnish"
+        }
+      ],
       "manual": true
     },
     {
@@ -42,6 +146,57 @@
       "url": "https://doi.org/10.1093/aob/mcag324",
       "type": "journal-article",
       "source": "Crossref",
+      "authors": [
+        {
+          "given": "Nathan G",
+          "family": "Kiel",
+          "orcid": "0000-0001-9623-9785"
+        },
+        {
+          "given": "Michael S",
+          "family": "Peyton",
+          "orcid": "0009-0002-4170-9633"
+        },
+        {
+          "given": "Sam W",
+          "family": "Anderson",
+          "orcid": "0009-0005-6016-9873"
+        },
+        {
+          "given": "Katherine T",
+          "family": "Charton",
+          "orcid": "0000-0002-0869-7899"
+        },
+        {
+          "given": "Brandon D",
+          "family": "Corder",
+          "orcid": "0000-0002-6442-2355"
+        },
+        {
+          "given": "Patricia W",
+          "family": "Chan"
+        },
+        {
+          "given": "Jordon C",
+          "family": "Tourville"
+        },
+        {
+          "given": "Lena N",
+          "family": "Berry"
+        },
+        {
+          "given": "Linden A",
+          "family": "Taylor"
+        },
+        {
+          "given": "Tyler H",
+          "family": "Wintermute"
+        },
+        {
+          "given": "Thomas J",
+          "family": "Givnish"
+        }
+      ],
       "manual": true
     },
     {
@@ -62,7 +217,29 @@
       "url": "https://doi.org/10.2478/acpa-2018-0006",
       "type": "journal-article",
       "source": "ORCID",
-      "manual": true
+      "manual": true,
+      "authors": [
+        {
+          "given": "Steven R.",
+          "family": "Manchester"
+        },
+        {
+          "given": "David L.",
+          "family": "Dilcher"
+        },
+        {
+          "given": "Walter S.",
+          "family": "Judd"
+        },
+        {
+          "given": "Brandon",
+          "family": "Corder"
+        },
+        {
+          "given": "James F.",
+          "family": "Basinger"
+        }
+      ]
     }
   ]
 }
