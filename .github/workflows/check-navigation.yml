@@ -5,6 +5,7 @@ on:
     paths:
       - '*.html'
       - 'scripts/check_navigation.py'
+      - 'images/gallery/**'
       - 'assets/css/site-overrides.css'
       - 'assets/js/theme.js'
       - 'scripts/test_theme.js'
@@ -13,6 +14,7 @@ on:
     paths:
       - '*.html'
       - 'scripts/check_navigation.py'
+      - 'images/gallery/**'
       - 'assets/css/site-overrides.css'
       - 'assets/js/theme.js'
       - 'scripts/test_theme.js'

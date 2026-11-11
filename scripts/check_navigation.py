@@ -236,6 +236,26 @@ def audit() -> list[str]:
             failures.append(f"Gallery photo missing: {photo}")
     if '<li><a href="gallery.html">Gallery</a></li>' not in gallery_html:
         failures.append("Gallery does not include its own navigation link")
+    # Gallery uploads must remain automatic: Jekyll builds the image list from
+    # images/gallery/ and displays each filename stem unchanged as a caption.
+    if not (ROOT / "images/gallery/README.md").is_file():
+        failures.append("images/gallery/ upload folder or instructions missing")
+    if (ROOT / ".nojekyll").exists():
+        failures.append("Jekyll must remain enabled for automatic gallery file listing")
+    if gallery_html.splitlines()[:3] != ["---", "layout: null", "---"]:
+        failures.append("gallery.html must have Jekyll front matter")
+    for required in (
+        "site.static_files",
+        "photo.path contains '/images/gallery/'",
+        'sort: "name"',
+        "photo.extname | downcase",
+        "photo.basename | escape",
+        "photo.path | relative_url | escape",
+        "gallery_photo_count",
+    ):
+        if required not in gallery_html:
+            failures.append(f"Automatic gallery template missing: {required}")
+
 
     # Preserve the main iNaturalist CTA while removing the broken FA5 leaf icon.
     if 'icon brands fa-leaf' in homepage:
