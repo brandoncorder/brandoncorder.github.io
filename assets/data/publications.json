@@ -12,7 +12,14 @@
       "url": "https://ci.lib.ncsu.edu/citation/1469896",
       "type": "journal-article",
       "source": "ORCID",
-      "manual": true
+      "manual": true,
+      "authors": [
+        {
+          "given": "Brandon D",
+          "family": "Corder",
+          "orcid": "0000-0002-6442-2355"
+        }
+      ]
     },
     {
       "title": "Deciduous and evergreen leaf habit structures intraspecific trait expression along an elevational gradient",
@@ -22,7 +29,59 @@
       "url": "https://doi.org/10.1093/aob/mcag179",
       "type": "journal-article",
       "source": "Crossref",
-      "manual": true
+      "authors": [
+        {
+          "given": "Michael S",
+          "family": "Peyton",
+          "orcid": "0009-0002-4170-9633"
+        },
+        {
+          "given": "Katherine T",
+          "family": "Charton",
+          "orcid": "0000-0002-0869-7899"
+        },
+        {
+          "given": "Nathan G",
+          "family": "Kiel",
+          "orcid": "0000-0001-9623-9785"
+        },
+        {
+          "given": "Tyler H",
+          "family": "Wintermute"
+        },
+        {
+          "given": "Jordon C",
+          "family": "Tourville"
+        },
+        {
+          "given": "Sam W",
+          "family": "Anderson",
+          "orcid": "0009-0005-6016-9873"
+        },
+        {
+          "given": "Lena N",
+          "family": "Berry"
+        },
+        {
+          "given": "Brandon D",
+          "family": "Corder",
+          "orcid": "0000-0002-6442-2355"
+        },
+        {
+          "given": "Patricia W",
+          "family": "Chan"
+        },
+        {
+          "given": "Linden A",
+          "family": "Taylor"
+        },
+        {
+          "given": "Thomas J",
+          "family": "Givnish"
+        }
+      ],
+      "manual": true,
+      "published_date": "2026-06-24"
     },
     {
       "title": "Foliar metabolomes of woody plant communities across an elevational gradient on Mount Washington (New Hampshire, USA)",
@@ -32,7 +91,61 @@
       "url": "https://doi.org/10.1093/aob/mcag307",
       "type": "journal-article",
       "source": "Crossref",
-      "manual": true
+      "authors": [
+        {
+          "given": "Tyler H",
+          "family": "Wintermute",
+          "orcid": "0009-0002-6857-5970"
+        },
+        {
+          "given": "Linden A",
+          "family": "Taylor"
+        },
+        {
+          "given": "Michael S",
+          "family": "Peyton",
+          "orcid": "0009-0002-4170-9633"
+        },
+        {
+          "given": "Nathan G",
+          "family": "Kiel",
+          "orcid": "0000-0001-9623-9785"
+        },
+        {
+          "given": "Lena N",
+          "family": "Berry",
+          "orcid": "0009-0000-3749-1059"
+        },
+        {
+          "given": "Katherine T",
+          "family": "Charton",
+          "orcid": "0000-0002-0869-7899"
+        },
+        {
+          "given": "Sam W",
+          "family": "Anderson",
+          "orcid": "0009-0005-6016-9873"
+        },
+        {
+          "given": "Patricia W",
+          "family": "Chan"
+        },
+        {
+          "given": "Brandon D",
+          "family": "Corder",
+          "orcid": "0000-0002-6442-2355"
+        },
+        {
+          "given": "Jordon",
+          "family": "Tourville"
+        },
+        {
+          "given": "Thomas J",
+          "family": "Givnish"
+        }
+      ],
+      "manual": true,
+      "published_date": "2026-09-24"
     },
     {
       "title": "Taxonomic, functional, and phylogenetic structure of Mt. Washington’s woody plant communities (New Hampshire, USA)",
@@ -42,7 +155,59 @@
       "url": "https://doi.org/10.1093/aob/mcag324",
       "type": "journal-article",
       "source": "Crossref",
-      "manual": true
+      "authors": [
+        {
+          "given": "Nathan G",
+          "family": "Kiel",
+          "orcid": "0000-0001-9623-9785"
+        },
+        {
+          "given": "Michael S",
+          "family": "Peyton",
+          "orcid": "0009-0002-4170-9633"
+        },
+        {
+          "given": "Sam W",
+          "family": "Anderson",
+          "orcid": "0009-0005-6016-9873"
+        },
+        {
+          "given": "Katherine T",
+          "family": "Charton",
+          "orcid": "0000-0002-0869-7899"
+        },
+        {
+          "given": "Brandon D",
+          "family": "Corder",
+          "orcid": "0000-0002-6442-2355"
+        },
+        {
+          "given": "Patricia W",
+          "family": "Chan"
+        },
+        {
+          "given": "Jordon C",
+          "family": "Tourville"
+        },
+        {
+          "given": "Lena N",
+          "family": "Berry"
+        },
+        {
+          "given": "Linden A",
+          "family": "Taylor"
+        },
+        {
+          "given": "Tyler H",
+          "family": "Wintermute"
+        },
+        {
+          "given": "Thomas J",
+          "family": "Givnish"
+        }
+      ],
+      "manual": true,
+      "published_date": "2026-10-07"
     },
     {
       "title": "Trophic Mode Evolution in Orchids: Integrating Regional Isotope, Fungal, and Genomic Approaches",
@@ -52,7 +217,14 @@
       "url": "https://ci.lib.ncsu.edu/citation/1469897",
       "type": "dissertation",
       "source": "ORCID",
-      "manual": true
+      "manual": true,
+      "authors": [
+        {
+          "given": "Brandon D",
+          "family": "Corder",
+          "orcid": "0000-0002-6442-2355"
+        }
+      ]
     },
     {
       "title": "Early eudicot flower and fruit: Dakotanthus gen. nov. from the Cretaceous Dakota Formation of Kansas and Nebraska, USA",
@@ -62,7 +234,30 @@
       "url": "https://doi.org/10.2478/acpa-2018-0006",
       "type": "journal-article",
       "source": "ORCID",
-      "manual": true
+      "manual": true,
+      "authors": [
+        {
+          "given": "Steven R.",
+          "family": "Manchester"
+        },
+        {
+          "given": "David L.",
+          "family": "Dilcher"
+        },
+        {
+          "given": "Walter S.",
+          "family": "Judd"
+        },
+        {
+          "given": "Brandon",
+          "family": "Corder"
+        },
+        {
+          "given": "James F.",
+          "family": "Basinger"
+        }
+      ],
+      "published_date": "2018-06-01"
     }
   ]
 }
