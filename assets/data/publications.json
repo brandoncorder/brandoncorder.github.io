@@ -1,7 +1,7 @@
 {
   "orcid": "0000-0002-6442-2355",
   "description": "A curated seed collection, periodically supplemented using ORCID and Crossref metadata. Manual entries are retained when APIs are unavailable.",
-  "last_checked": "2026-11-16",
+  "last_checked": "2026-11-23",
   "source_status": "ORCID: 6 qualifying records; Crossref: 3 qualifying records",
   "publications": [
     {
